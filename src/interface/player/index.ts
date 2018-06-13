@@ -10,6 +10,6 @@ class Player {
 
 }
 
-const player = new Player;
+const player = new Player();
 
 export default player;
