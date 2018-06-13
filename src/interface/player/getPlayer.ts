@@ -6,6 +6,6 @@ interface PlayerParams {
 
 const url = 'https://api.opendota.com/api/players/';
 
-export async function getPlayer(params: PlayerParams): Promise<any> {
+export default async function getPlayer(params: PlayerParams): Promise<any> {
   return Axios.get(url + params.account_id);
 }

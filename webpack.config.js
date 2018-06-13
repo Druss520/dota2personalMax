@@ -29,12 +29,12 @@ module.exports = {
   } ,
   plugins: [
     new WebpackPwaManifest({
-      name: 'Manifest',
-      short_name: 'Mnfst',
-      description: 'An isomorphic progressive web blog built by React & Node',
+      name: 'Dota2 Info',
+      short_name: 'dota',
+      description: 'An isomorphic progressive dota info app built by React',
       background_color: '#333',
       theme_color: '#333',
-      filename: 'manifest.[hash:8].json',
+      filename: 'manifest.json',
       publicPath: '/',
       icons: [
         {
