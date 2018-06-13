@@ -2,3 +2,4 @@
 node_modules
 dist
 icons
+package-lock.json
