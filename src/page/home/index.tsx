@@ -24,7 +24,6 @@ interface State {
         })
       }
     });
-
   }
 
   public render(): JSX.Element {
@@ -40,6 +39,20 @@ interface State {
                   className={styles.personAvatar}
                   src={player.playerProfile.profile.avatarfull}
                 />
+                <div className={styles.personName}>
+                  {player.playerProfile.profile.personaname}
+                </div>
+              </div>
+              <div className={styles.personRight}>
+                <div className={styles.personRightRow1}>
+                  MMR: {player.playerProfile.mmr_estimate.estimate}
+                </div>
+                <div className={styles.personRightRow2}>
+                  Region: {player.playerProfile.profile.loccountrycode}
+                </div>
+                <div className={styles.personRightRow2}>
+                  Win: {player.winLose.win + '　'} Lose: {player.winLose.lose}
+                </div>
               </div>
             </div>
           </div>

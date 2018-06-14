@@ -1,3 +1,7 @@
+@function rem($value) {
+  @return ($value / 2) / 14 * 1rem;
+}
+
 .hehe {
   display: flex;
   flex-direction: column;
@@ -42,6 +46,12 @@
   border-radius: 48px;
 }
 
+.person-name {
+  font-size: 18px;
+  color: #333;
+  margin-top: rem(20);
+}
+
 :global(.loading) {
   display: flex;
   position: absolute;
@@ -53,7 +63,7 @@
 }
 
 body {
-  background-color: #fbfbfb;
+  background-color: #efeff5;
   margin: 0;
 }
 
@@ -77,4 +87,20 @@ body {
 .person-right {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.person-right-row1 {
+  display: flex;
+  flex-direction: row;
+  font-size: rem(40);
+  color: #666;
+}
+
+.person-right-row2 {
+  display: flex;
+  flex-direction: row;
+  font-size: rem(30);
+  color: #333;
 }

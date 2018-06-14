@@ -9,7 +9,9 @@ interface Params {
 } 
 
 interface PlayerProfile {
-  mmr_estimate: number;
+  mmr_estimate: {
+    estimate: number
+  };
   profile: Profile
 }
 
@@ -26,9 +28,14 @@ interface PlayerInfo {
   playerProfile: PlayerProfile
 }
 
+interface WinLose {
+  win: number;
+  lose: number;
+}
+
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
-  @observable public winLose: any | undefined;
+  @observable public winLose: WinLose | undefined;
   @observable public recentMatch: any | undefined;
 
   public params: Params = {
