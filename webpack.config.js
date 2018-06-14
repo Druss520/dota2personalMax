@@ -1,9 +1,11 @@
 const path = require('path');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
   output: {
+    publicPath: '/dist/',
     filename: './index.js'
   },
   module: {  
@@ -14,6 +16,33 @@ module.exports = {
           'style-loader',
           'css-loader?modules&localIdentName=[name]-[hash:base64:5]'
         ]
+      },
+      {
+        test: /\.(scss)$/,
+        use: ExtractTextPlugin.extract({
+          use: [{
+            loader: 'typings-for-css-modules-loader',
+            options: {
+              modules: true,
+              namedExport: true,
+              camelCase: true,
+              localIdentName: '[local]_[hash:base64:5]'
+            }
+          }, {
+            loader: 'sass-loader',
+            options: {
+              outputStyle: 'expanded',
+            }
+          }]
+        })
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'img/'
+        }
       },
       {
         test: /.tsx?$/,
@@ -49,6 +78,10 @@ module.exports = {
         'apple-mobile-web-app-capable': 'yes',
         'apple-touch-icon': 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3183691098,1018415343&fm=27&gp=0.jpg',
       },
+    }),
+    new ExtractTextPlugin({
+      filename: 'css/[name].css',
+      allChunks: true
     })
   ]
 }

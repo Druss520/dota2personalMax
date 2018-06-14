@@ -1,4 +1,4 @@
-import './red.css';
+
 import * as React from 'react';
 
 class Red extends React.Component<IAppProps,IAppState>{

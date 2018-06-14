@@ -1,0 +1,80 @@
+.hehe {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+
+.header {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  background-color: #333;
+  color: #fff;
+}
+
+.body {
+  font-size: 15px;
+  color: #333;
+}
+
+.person {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  background-color: #fff;
+  padding: 15px;
+}
+
+.person-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.person-avatar {
+  height: 96px;
+  width: 96px;
+  background-size: 100% 100%;
+  border-radius: 48px;
+}
+
+:global(.loading) {
+  display: flex;
+  position: absolute;
+  height: 188px;
+  width: 188px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body {
+  background-color: #fbfbfb;
+  margin: 0;
+}
+
+.empty-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fbfbfb;
+}
+
+.reload {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.person-right {
+  display: flex;
+  flex-direction: column;
+}
