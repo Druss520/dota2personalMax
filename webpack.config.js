@@ -33,6 +33,13 @@ module.exports = {
             options: {
               outputStyle: 'expanded',
             }
+          }, {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: [
+                path.resolve(__dirname, 'src/assets/style/global.scss'),
+              ]
+            },
           }]
         })
       },

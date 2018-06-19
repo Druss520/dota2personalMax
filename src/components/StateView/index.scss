@@ -1,0 +1,25 @@
+.empty-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: #fbfbfb;
+}
+
+.reload {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #999;
+}
+
+.fail {
+  display: block;
+  width: rem(200);
+  height: rem(200);
+  background-size: 100% 100%;
+  margin-bottom: 15px;
+}

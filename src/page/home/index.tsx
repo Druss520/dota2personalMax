@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import * as styles from './index.scss'
 import player from '../../interface/player';
 import { observer } from 'mobx-react';
-import img from '../../config/imgCfg';
+import config from '../../config';
+import StateView from '../../components/StateView';
+import heroes from '../../interface/heros';
+import { values } from 'mobx';
 
 interface State {
   needReload: boolean;
@@ -24,6 +27,13 @@ interface State {
         })
       }
     });
+    heroes.getHeroInfo().then((value) => {
+      if(value) {
+        this.setState({
+          needReload: true
+        })
+      }
+    })
   }
 
   public render(): JSX.Element {
@@ -55,23 +65,17 @@ interface State {
                 </div>
               </div>
             </div>
+            <div>
+              {
+                player.recentMatch
+              }
+            </div>
           </div>
         ) : (
           this.state.needReload ? (
-            <div className={styles.reload}
-            onClick={() => {
-              window.location.reload();
-            }}
-            >
-              点击重新加载
-            </div>
+            <StateView state={'fail'} />
           ) : (
-            <div className={styles.emptyPage}>
-              <img
-                className={'loading'}
-                src={img.loading}
-              />
-            </div>
+            <StateView state={'loading'} />
           )
         )
       )
