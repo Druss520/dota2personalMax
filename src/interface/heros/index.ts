@@ -2,7 +2,7 @@ import { observable } from 'mobx';
 import {action} from 'mobx';
 import getHeros from './getAllHero';
 
-interface Heros {
+export interface Heroes {
   id: number,
   name: string,
   localized_name: string,
@@ -13,7 +13,7 @@ interface Heros {
 }
 
 class Heros {
-  @observable public heroArray: Heros[] | undefined;
+  @observable public heroArray: Heroes[] | undefined;
 
   @action public async getHeroInfo(): Promise<boolean> {
     let fail = false;

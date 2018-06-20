@@ -1,6 +1,92 @@
 .block {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: #fff;
-  border-bottom: rem(1) solid #b2b2b2;
+  border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
   padding: rem(25);
 }
+
+.left {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hero-icon {
+  height: rem(80);
+  width: auto;
+  background-size: 100% 100%;
+  margin-right: rem(25);
+}
+
+.win {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(30);
+  font-weight: bold;
+  background-color: rgb(30, 235, 74);
+  color: #fff;
+  height: rem(50);
+  width: rem(50);
+  margin-right: rem(30);
+}
+
+.lose {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(30);
+  font-weight: bold;
+  background-color: #bbb;
+  color: #fff;
+  height: rem(50);
+  width: rem(50);
+  margin-right: rem(30);
+}
+
+.level {
+  font-size: rem(28);
+  color: #999;
+}
+
+.right {
+  display: flex;
+  width: 45%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.right1 {
+  display: flex;
+  width: 60%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.right2 {
+  display: flex;
+  width: 35%;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: rem(20);
+  font-size: rem(28);
+  color: #333;
+}
+
+.row2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(22);
+  color: #999;
+}
+
+

@@ -1,2 +1,11 @@
 export const block: string;
-
+export const left: string;
+export const heroIcon: string;
+export const win: string;
+export const lose: string;
+export const level: string;
+export const right: string;
+export const right1: string;
+export const right2: string;
+export const row1: string;
+export const row2: string;

@@ -33,7 +33,7 @@ interface WinLose {
   lose: number;
 }
 
-interface RecentMatches {
+export interface RecentMatches {
   match_id: number,
   player_slot: number,
   radiant_win: boolean,
@@ -58,7 +58,7 @@ interface RecentMatches {
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
   @observable public winLose: WinLose | undefined;
-  @observable public recentMatch: RecentMatches | undefined;
+  @observable public recentMatch: RecentMatches[] | undefined;
 
   public params: Params = {
     account_id: 192820722

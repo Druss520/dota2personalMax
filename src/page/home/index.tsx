@@ -7,6 +7,8 @@ import config from '../../config';
 import StateView from '../../components/StateView';
 import heroes from '../../interface/heros';
 import { values } from 'mobx';
+import MatchItem from '../../components/MatchItem';
+import ListPopdown from '../../components/ListPopdown';
 
 interface State {
   needReload: boolean;
@@ -65,11 +67,10 @@ interface State {
                 </div>
               </div>
             </div>
-            <div>
-              {
-                player.recentMatch
-              }
-            </div>
+            
+            <ListPopdown
+            matches={player.recentMatch}
+            />
           </div>
         ) : (
           this.state.needReload ? (
