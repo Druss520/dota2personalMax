@@ -12,31 +12,52 @@ import * as classNames from 'classnames';
 import history from '../../history';
 
 interface State {
-  needReload: boolean;
+  fail: number;
+  call1: boolean;
+  call2: boolean
 }
 
 @observer class App extends React.Component<IAppProps, State>{
 
   public state: State = {
-    needReload: false
+    fail: 0,
+    call1: false,
+    call2: false,
   }
 
   public componentDidMount(): void {
-    player.getAllInfo().then((value) => {
-      // console.log(value);
-      if (value) {
-        this.setState({
-          needReload: true
-        })
-      }
-    });
-    heroes.getHeroInfo().then((value) => {
-      if(value) {
-        this.setState({
-          needReload: true
-        })
-      }
-    })
+    const tempid = config.global.Global.accountId
+    if (tempid === '') {
+      history.push('/entry');
+    } else {
+      player.getAllInfo().then((value) => {
+        // console.log(value);
+        if (value === 1) {
+          this.setState({
+            fail: 1
+          })
+        } else if (value === 2) {
+          this.setState({
+            fail: 2
+          })
+        } else {
+          this.setState({
+            call1: true
+          })
+        }
+      });
+      heroes.getHeroInfo().then((value) => {
+        if(value) {
+          this.setState({
+            fail: 1
+          })
+        } else {
+          this.setState({
+            call2: true
+          })
+        }
+      })
+    }
   }
 
   // public componentWillUnmount(): void {
@@ -45,7 +66,7 @@ interface State {
 
   public render(): JSX.Element {
       return(
-        player.playerProfile && player.recentMatch && player.winLose ? (
+        this.state.call1 && this.state.call2 ? (
           <div className={styles.hehe}>
             <div className={styles.header}>
               <div className={styles.switch1}
@@ -93,10 +114,16 @@ interface State {
             />
           </div>
         ) : (
-          this.state.needReload ? (
+          this.state.fail === 1 ? (
             <StateView state={'fail'} />
           ) : (
-            <StateView state={'loading'} />
+            this.state.fail === 2 ? (
+              <div>
+                needcorrectId
+              </div>
+            ) : (
+              <StateView state={'loading'} />
+            )
           )
         )
       )

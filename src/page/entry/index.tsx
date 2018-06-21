@@ -32,7 +32,9 @@ class Entry extends React.Component<IAppProps,State>{
     const regex = /^[0-9]{9}$/;
     if (value.match(regex)) {
       config.global.Global.accountId = value;
-      history.push('/');
+      setTimeout(() => {
+        history.push('/');
+      }, 300)
     } else {
 
     }

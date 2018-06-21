@@ -66,31 +66,43 @@ class Player {
     account_id: parseInt(config.global.Global.accountId)
   }
 
-  @action public async getAllInfo(): Promise<boolean> {
-    let fail = false;
+  @action public async getAllInfo(): Promise<number> {
+    let typeNum = 0;
+    this.params = {
+      account_id: parseInt(config.global.Global.accountId)
+    }
 
     await  getPlayer(this.params).then((res) => {
       this.playerProfile = res.data;
+      if (this.playerProfile.profile === undefined) {
+        typeNum = 2;
+      }
     }).catch((e) => {
       console.log(e);
-      fail = true;
+      typeNum = 1;
     })
 
     await  getWinLose(this.params).then((res) => {
       this.winLose = res.data;
+      if (this.winLose.lose ===0 && this.winLose.win === 0) {
+        typeNum = 2;
+      }
     }).catch((e) => {
       console.log(e);
-      fail = true;
+      typeNum = 1;
     })
     
     await  getRecentMatch(this.params).then((res) => {
       this.recentMatch = res.data;
+      if (this.recentMatch.length === 0) {
+        typeNum = 2;
+      }
     }).catch((e) => {
       console.log(e);
-      fail = true;
+      typeNum = 1;
     })
 
-    return fail;
+    return typeNum;
   }
 
 }
