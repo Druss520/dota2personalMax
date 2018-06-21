@@ -61,7 +61,7 @@ module.exports = {
     ]  
   },  
   resolve: {  
-      extensions: ['.webpack.js', '.web.js', '.ts', '.js', '.tsx']  
+      extensions: ['.webpack.js', '.web.js', '.ts', '.js', '.tsx', '.json']  
   } ,
   plugins: [
     new WebpackPwaManifest({

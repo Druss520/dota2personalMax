@@ -3,6 +3,7 @@ import getPlayer from './getPlayer';
 import getRecentMatch from './getRecentMatches';
 import getWinLose from './getWinLose';
 import {action} from 'mobx';
+import config from '../../config';
 
 interface Params {
   account_id: number;
@@ -60,8 +61,9 @@ class Player {
   @observable public winLose: WinLose | undefined;
   @observable public recentMatch: RecentMatches[] | undefined;
 
+  // 192820722
   public params: Params = {
-    account_id: 192820722
+    account_id: parseInt(config.global.Global.accountId)
   }
 
   @action public async getAllInfo(): Promise<boolean> {

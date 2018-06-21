@@ -9,6 +9,7 @@
 
 .left {
   display: flex;
+  width: 61%;
   justify-content: space-around;
   align-items: center;
 }
@@ -30,7 +31,7 @@
   color: #fff;
   height: rem(50);
   width: rem(50);
-  margin-right: rem(30);
+  margin-right: rem(20);
 }
 
 .lose {
@@ -43,31 +44,34 @@
   color: #fff;
   height: rem(50);
   width: rem(50);
-  margin-right: rem(30);
+  margin-right: rem(20);
 }
 
 .level {
-  font-size: rem(28);
+  display: flex;
+  width: 30%;
+  justify-content: flex-start;
+  font-size: rem(22);
   color: #999;
 }
 
 .right {
   display: flex;
-  width: 45%;
+  width: 35%;
   justify-content: flex-start;
   align-items: center;
 }
 
 .right1 {
   display: flex;
-  width: 60%;
+  width: 63%;
   flex-direction: column;
   align-items: flex-start;
 }
 
 .right2 {
   display: flex;
-  width: 35%;
+  width: 37%;
   flex-direction: column;
   align-items: flex-start;
 }

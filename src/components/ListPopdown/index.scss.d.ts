@@ -6,6 +6,7 @@ export const title: string;
 export const tleft: string;
 export const tleft1: string;
 export const tleft2: string;
+export const tleft3: string;
 export const tright: string;
 export const tright1: string;
 export const tright2: string;

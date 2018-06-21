@@ -4,20 +4,18 @@ import * as ReactDOM from 'react-dom';
 import * as React from 'react';
 import { HashRouter, Route, Link, Switch } from 'react-router-dom';
 import {  Router } from 'react-router';
-import Red from './page/red';
+import Entry from './page/entry';
 import App from './page/home';
-
-
-
+import history from './history';
 
 ReactDOM.render(
   <React.Fragment>
-    <HashRouter>
+    <Router history={history}>
       <div>
       <Route exact path="/" component={App} />
-      <Route exact path="/red" component={Red} />
+      <Route exact path="/entry" component={Entry} />
       </div>
-    </HashRouter>
+    </Router>
   </React.Fragment>,
   document.getElementById('reactRoot')
 );

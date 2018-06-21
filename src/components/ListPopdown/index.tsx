@@ -37,6 +37,7 @@ class ListPopdown extends React.Component<Props, State> {
           <div className={styles.tleft}>
             <div className={styles.tleft1}>英雄</div>
             <div className={styles.tleft2}>胜负</div>
+            <div className={styles.tleft3}>类型</div>
           </div>
           <div className={styles.tright}>
             <div className={styles.tright1}>时长</div>

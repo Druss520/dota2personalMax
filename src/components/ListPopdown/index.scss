@@ -46,14 +46,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 55%;
+    width: 63%;
 
     .tleft1 {
       width: 45%;
     }
 
     .tleft2 {
-      width: 40%;
+      width: 25%;
+    }
+
+    .tleft3 {
+      width: 30%;
     }
   }
 
@@ -62,7 +66,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    width: 44%;
+    width: 36%;
 
     .tright1 {
       width: 50%;

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
 import * as styles from './index.scss'
 import player from '../../interface/player';
 import { observer } from 'mobx-react';
@@ -9,6 +8,8 @@ import heroes from '../../interface/heros';
 import { values } from 'mobx';
 import MatchItem from '../../components/MatchItem';
 import ListPopdown from '../../components/ListPopdown';
+import * as classNames from 'classnames';
+import history from '../../history';
 
 interface State {
   needReload: boolean;
@@ -38,12 +39,31 @@ interface State {
     })
   }
 
+  // public componentWillUnmount(): void {
+
+  // }
+
   public render(): JSX.Element {
       return(
         player.playerProfile && player.recentMatch && player.winLose ? (
           <div className={styles.hehe}>
             <div className={styles.header}>
-              Dota2 个人信息
+              <div className={styles.switch1}
+              onClick={() => {
+                history.push('/entry');
+              }}
+              >
+                <div className={classNames([
+                  styles.switchIcon,
+                  'fa fa-exchange'
+                ])}
+                >
+                </div>
+                <div className={styles.switchText}>
+                  切换玩家
+                </div>
+              </div>
+              Dota2 Data
             </div>
             <div className={styles.person}>
               <div className={styles.personLeft}>
@@ -67,7 +87,7 @@ interface State {
                 </div>
               </div>
             </div>
-            
+
             <ListPopdown
             matches={player.recentMatch}
             />

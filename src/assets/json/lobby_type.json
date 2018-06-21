@@ -1,0 +1,59 @@
+{
+  "0": {
+    "id": 0,
+    "name": "lobby_type_normal",
+    "chinese": "普通",
+    "balanced": true
+  },
+  "1": {
+    "id": 1,
+    "name": "lobby_type_practice",
+    "chinese": "练习赛",
+    "balanced": true
+  },
+  "2": {
+    "id": 2,
+    "name": "lobby_type_tournament",
+    "chinese": "职业联赛",
+    "balanced": true
+  },
+  "3": {
+    "id": 3,
+    "name": "lobby_type_tutorial",
+    "chinese": "教学模式"
+  },
+  "4": {
+    "id": 4,
+    "name": "lobby_type_coop_bots",
+    "chinese": "人机合作"
+  },
+  "5": {
+    "id": 5,
+    "name": "lobby_type_ranked_team_mm",
+    "chinese": "组队天梯",
+    "balanced": true
+  },
+  "6": {
+    "id": 6,
+    "name": "lobby_type_ranked_solo_mm",
+    "chinese": "单排天梯",
+    "balanced": true
+  },
+  "7": {
+    "id": 7,
+    "name": "lobby_type_ranked",
+    "chinese": "天梯匹配",
+    "balanced": true
+  },
+  "8": {
+    "id": 8,
+    "name": "lobby_type_1v1_mid",
+    "chinese": "中路Solo"
+  },
+  "9": {
+    "id": 9,
+    "name": "lobby_type_battle_cup",
+    "chinese": "勇士联赛",
+    "balanced": true
+  }
+}

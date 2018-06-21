@@ -16,6 +16,26 @@
   color: #fff;
 }
 
+.switch1 {
+  display: flex;
+  position: absolute;
+  top: rem(50);
+  left: rem(30);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.switch-icon {
+  font-size: rem(24);
+  color: #fff;
+}
+
+.switch-text {
+  font-size: rem(22);
+  color: #fff;
+}
+
 .body {
   font-size: 15px;
   color: #333;

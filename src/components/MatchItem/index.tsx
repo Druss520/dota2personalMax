@@ -6,6 +6,8 @@ import heroStats, { Heroes } from '../../interface/heros';
 import TimeDif from '../../utils/timeDifference';
 import Duration from '../../utils/standardTime';
 import KDA from '../../utils/getKDA';
+const lobby_type = require('../../assets/json/lobby_type.json');
+const gameMode = require('../../assets/json/game_mode.json');
 
 interface Props {
   match: RecentMatches;
@@ -21,6 +23,7 @@ const MatchItem = (props: Props) => {
       break;
     }
   }
+  // console.log(match.game_mode,gameMode);
 
   return (
     <div className={styles.block}>
@@ -42,9 +45,25 @@ const MatchItem = (props: Props) => {
             </div>
           )
         }
-        {/* <div className={styles.level}>
-          {match.skill}
-        </div> */}
+        <div className={styles.level}>
+          {
+            match.lobby_type === 0 ? (
+              gameMode[match.game_mode] ? (
+                gameMode[match.game_mode].chinese
+              ) : null
+            ) : (
+              match.lobby_type  === 4 ? (
+                gameMode[match.game_mode] ? (
+                  gameMode[match.game_mode].chinese
+                ) : null
+              ) : (
+                lobby_type[match.lobby_type] ? (
+                  lobby_type[match.lobby_type].chinese
+                ) : null
+              )
+            )
+          }
+        </div>
       </div>
       <div className={styles.right}>
         <div className={styles.right1}>
