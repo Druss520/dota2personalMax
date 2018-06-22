@@ -8,13 +8,13 @@
   "1": {
     "id": 1,
     "name": "lobby_type_practice",
-    "chinese": "练习赛",
+    "chinese": "联赛",
     "balanced": true
   },
   "2": {
     "id": 2,
     "name": "lobby_type_tournament",
-    "chinese": "职业联赛",
+    "chinese": "巡回赛",
     "balanced": true
   },
   "3": {

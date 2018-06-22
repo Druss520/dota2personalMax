@@ -10,6 +10,11 @@ interface Params {
 } 
 
 interface PlayerProfile {
+  tracked_until: string,
+  solo_competitive_rank: string,
+  competitive_rank: string,
+  rank_tier: number,
+  leaderboard_rank: number,
   mmr_estimate: {
     estimate: number
   };
@@ -23,6 +28,8 @@ interface Profile {
   avatarfull: string;
   loccountrycode: string;
   personaname: string;
+  steamid: string,
+  name: string,
 }
 
 interface PlayerInfo {

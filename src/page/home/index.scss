@@ -51,9 +51,11 @@
 
 .person-left {
   display: flex;
+  width: 50%;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 0 rem(15);
 }
 
 .person-avatar {
@@ -64,9 +66,29 @@
 }
 
 .person-name {
-  font-size: 18px;
-  color: #333;
+  font-size: rem(30);
+  color: #666;
   margin-top: rem(20);
+}
+
+.pro-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: rem(8);
+}
+
+.pro-name {
+  font-size: rem(26);
+  color: #333;
+  margin-right: rem(4);
+}
+
+.pro-icon {
+  color: cornflowerblue;
+  margin-right: rem(8);
+  margin-left: rem(4);
 }
 
 :global(.loading) {
@@ -96,13 +118,14 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .person-right {
   display: flex;
+  width: 50%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -122,3 +145,34 @@ body {
   color: #333;
 }
 
+.person-right-small {
+  display: flex;
+  flex-direction: row;
+  font-size: rem(24);
+  color: #666;
+}
+
+.no-such {
+  height: rem(230);
+  width: rem(220);
+  background-size: 99% 99%;
+  margin-bottom: rem(20);
+}
+
+.hint {
+  font-size: rem(28);
+  color: #666;
+  margin-bottom: rem(35);
+}
+
+.btn-go {
+  background-color: dodgerblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: rem(20);
+  color: #fff;
+  font-size: rem(26);
+  letter-spacing: rem(2);
+  padding: rem(15);
+}

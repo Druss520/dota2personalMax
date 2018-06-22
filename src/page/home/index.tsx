@@ -95,17 +95,38 @@ interface State {
                 <div className={styles.personName}>
                   {player.playerProfile.profile.personaname}
                 </div>
+                {
+                  player.playerProfile.profile.name ? (
+                    <div className={styles.proRow}>
+                    (
+                      <div className={classNames([
+                        'fa fa-id-card-o',
+                        styles.proIcon
+                      ])}></div>
+                      <div className={styles.proName}>
+                      {player.playerProfile.profile.name}
+                      </div>
+                    )
+                    </div>
+                  ) : null
+                }
               </div>
               <div className={styles.personRight}>
                 <div className={styles.personRightRow1}>
                   MMR: {player.playerProfile.mmr_estimate.estimate}
                 </div>
                 <div className={styles.personRightRow2}>
-                  Region: {player.playerProfile.profile.loccountrycode}
+                  天梯排名: {player.playerProfile.leaderboard_rank ? player.playerProfile.leaderboard_rank : '--'}
                 </div>
                 <div className={styles.personRightRow2}>
+                  Region: {player.playerProfile.profile.loccountrycode ? player.playerProfile.profile.loccountrycode : '--'}
+                </div>
+                <div className={styles.personRightSmall}>
                   Win: {player.winLose.win + '　'} Lose: {player.winLose.lose}
                 </div>
+                {/* <div className={styles.personRightSmall}>
+                  {player.playerProfile.profile.steamid}
+                </div> */}
               </div>
             </div>
 
@@ -118,8 +139,19 @@ interface State {
             <StateView state={'fail'} />
           ) : (
             this.state.fail === 2 ? (
-              <div>
-                needcorrectId
+              <div className={styles.reload}>
+                <img
+                className={styles.noSuch}
+                src={config.img.empty}
+                />
+                <div className={styles.hint}>未找到玩家信息</div>
+                <div className={styles.btnGo}
+                onClick={() => {
+                  history.push('/entry');
+                }}
+                >
+                  重新输入
+                </div>
               </div>
             ) : (
               <StateView state={'loading'} />
