@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as styles from './index.scss';
 import * as classNames from 'classnames';
 import history from '../../history';
+import Toast from '../../components/Toast';
 
 interface State {
   playerId: string;
@@ -29,14 +30,14 @@ class Entry extends React.Component<IAppProps,State>{
 
   public onSubmit(): void {
     const value = this.state.playerId;
-    const regex = /^[0-9]{9}$/;
+    const regex = /^[0-9]{8,9}$/;
     if (value.match(regex)) {
       config.global.Global.accountId = value;
       setTimeout(() => {
         history.push('/');
       }, 300)
     } else {
-
+      Toast.show('ID格式不正确',3);
     }
     
   }
@@ -68,7 +69,7 @@ class Entry extends React.Component<IAppProps,State>{
               <input
               className={styles.input}
               type="number"
-              placeholder={'输入9位游戏id以继续'}
+              placeholder={'输入8-9位游戏id以继续'}
               onChange={(e) => {
                 this.onChange(e);
               }}

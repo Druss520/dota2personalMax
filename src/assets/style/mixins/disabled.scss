@@ -1,0 +1,5 @@
+@mixin disabled() {
+  color: $disabled;
+  pointer-events: none;
+  cursor: not-allowed !important;
+} 

@@ -1,0 +1,18 @@
+// 利用transform居中
+@mixin translateCenter($direction: both) {
+  position: absolute;
+  z-index: 1;
+  @if $direction == both {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  @else if $direction == x {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+  @else if $direction == y {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}

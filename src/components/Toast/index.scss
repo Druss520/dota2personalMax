@@ -1,5 +1,5 @@
-@import '../../style/variable.scss';
-@import '../../style/mixins.scss';
+@import '../../assets/style/variable.scss';
+@import '../../assets/style/mixins.scss';
 $prefix: yj-component-toast;
 
 :global(.#{$prefix}) {

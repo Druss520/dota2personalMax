@@ -73,6 +73,9 @@ class Player {
     account_id: parseInt(config.global.Global.accountId)
   }
 
+  public previousAccountId: string | undefined;
+  public isFakeId: boolean = false;
+
   @action public async getAllInfo(): Promise<number> {
     let typeNum = 0;
     this.params = {
@@ -83,6 +86,7 @@ class Player {
       this.playerProfile = res.data;
       if (this.playerProfile.profile === undefined) {
         typeNum = 2;
+        this.isFakeId = true;
       }
     }).catch((e) => {
       console.log(e);
@@ -93,6 +97,7 @@ class Player {
       this.winLose = res.data;
       if (this.winLose.lose ===0 && this.winLose.win === 0) {
         typeNum = 2;
+        this.isFakeId = true;
       }
     }).catch((e) => {
       console.log(e);
@@ -103,6 +108,7 @@ class Player {
       this.recentMatch = res.data;
       if (this.recentMatch.length === 0) {
         typeNum = 2;
+        this.isFakeId = true;
       }
     }).catch((e) => {
       console.log(e);

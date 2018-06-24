@@ -1,0 +1,8 @@
+// 局部滚动
+@mixin scroll() {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  transform: translate3d(0, 0, 0);
+  position: relative;
+  z-index: 1;
+}

@@ -27,36 +27,53 @@ interface State {
 
   public componentDidMount(): void {
     const tempid = config.global.Global.accountId
+    const prevAccountId = player.previousAccountId;
     if (tempid === '') {
       history.push('/entry');
     } else {
-      player.getAllInfo().then((value) => {
-        // console.log(value);
-        if (value === 1) {
-          this.setState({
-            fail: 1
-          })
-        } else if (value === 2) {
-          this.setState({
-            fail: 2
-          })
-        } else {
-          this.setState({
-            call1: true
-          })
-        }
-      });
-      heroes.getHeroInfo().then((value) => {
-        if(value) {
-          this.setState({
-            fail: 1
-          })
-        } else {
+      if (player.isFakeId || prevAccountId !== tempid) {
+        player.previousAccountId = tempid;
+        player.getAllInfo().then((value) => {
+          // console.log(value);
+          if (value === 1) {
+            this.setState({
+              fail: 1
+            })
+          } else if (value === 2) {
+            this.setState({
+              fail: 2
+            })
+          } else {
+            player.isFakeId = false;
+            this.setState({
+              call1: true
+            })
+          }
+        });
+        if (heroes.heroArray) {
           this.setState({
             call2: true
           })
+        } else {
+          heroes.getHeroInfo().then((value) => {
+            if(value) {
+              this.setState({
+                fail: 1
+              })
+            } else {
+              this.setState({
+                call2: true
+              })
+            }
+          })
         }
-      })
+      } else {
+        console.log('cache');
+        this.setState({
+          call1: true,
+          call2: true,
+        })
+      }
     }
   }
 

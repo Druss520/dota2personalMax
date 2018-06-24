@@ -3,18 +3,32 @@ import * as React from 'react';
 import * as styles from './index.scss';
 
 interface Props {
+  
+}
+
+interface State {
 
 }
 
-const MatchItem = (props: Props) => {
-  const {  } = props;
+class TabBottom extends React.Component<State,Props> {
+  
+  constructor(props: Props) {
+    super(props);
 
-  return (
-    <div className={styles.block}>
-      
-    </div>
-  )
+  }
+
+  public state: State = {
+    
+  }
+
+  public render(): JSX.Element {
+    return (
+      <div className={styles.block}>
+        
+      </div>
+    )
+  }
 }
 
 
-export default MatchItem;
+export default TabBottom;
