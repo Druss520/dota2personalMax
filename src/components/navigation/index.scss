@@ -1,6 +1,31 @@
 .block {
+  position: fixed;
   display: flex;
+  bottom: 0;
+  left: 0;
+  height: rem(80);
+  width: 100%;
   background-color: #fff;
-  border-bottom: rem(1) solid #b2b2b2;
-  padding: rem(25);
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  display: flex;
+  font-size: rem(24);
+  color: #666;
+}
+
+.text-active {
+  display: flex;
+  font-size: rem(24);
+  color: orange;
 }

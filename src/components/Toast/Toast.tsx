@@ -1,12 +1,9 @@
 import * as React from 'react';
-// import Icon from '../Icon';
-// import svgRootPath from '../../utils/svgRootPath';
-// const svgFile = {
-//   success: svgRootPath + require('../../assets/success.svg').id,
-//   fail: svgRootPath + require('../../assets/fail.svg').id,
-//   loading: svgRootPath + require('../../assets/loading.svg').id
-// };
+import * as classNames from 'classnames';
 
+const iconClass = {
+  'fail': 'fa fa-warning fa-2x'
+}
 
 export interface ToastProps {
   type?: 'success' | 'fail' | 'loading';
@@ -19,7 +16,11 @@ const Toast = (props: ToastProps) => {
 
   return type ? (
     <div className={`${prefixCls}-text ${prefixCls}-text-icon`}>
-      {/* <Icon src={svgFile[type]} /> */}
+    <div
+    className={classNames([
+      iconClass[type]
+    ])}
+    ></div>
       <div className={`${prefixCls}-text-info`}>{children}</div>
     </div>
   ) : (

@@ -7,6 +7,8 @@ class Global {
   public static set accountId(accountId: string) {
     localStorage.setItem('accountId', accountId);
   }
+
+  public static tabActive: number = 0;
 }
 
 export default {

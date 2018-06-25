@@ -101,7 +101,7 @@ interface State {
                   切换玩家
                 </div>
               </div>
-              Dota2 Data
+              Dota2 miniMax+
             </div>
             <div className={styles.person}>
               <div className={styles.personLeft}>

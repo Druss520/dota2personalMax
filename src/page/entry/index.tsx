@@ -37,7 +37,7 @@ class Entry extends React.Component<IAppProps,State>{
         history.push('/');
       }, 300)
     } else {
-      Toast.show('ID格式不正确',3);
+      Toast.warning('ID格式不正确',2);
     }
     
   }

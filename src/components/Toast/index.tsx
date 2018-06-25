@@ -51,6 +51,12 @@ class Toast extends React.PureComponent<Props> {
     ), getContainer());
   }
 
+  public static warning = (content: string, duration?: number) => {
+    ReactDom.render((
+      <Toast duration={duration} type={'fail'}>{content}</Toast>
+    ), getContainer());
+  }
+
   public static loading = (content: string) => {
     ReactDom.render((
       <Toast className={`${prefixCls}-loading`} duration={10000} mask>{content}</Toast>
