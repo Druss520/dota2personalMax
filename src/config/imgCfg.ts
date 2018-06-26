@@ -3,6 +3,7 @@ const fail = require('../assets/img/fail.png');
 const add = require('../assets/img/add.png');
 const aegis = require('../assets/img/aegis.jpg');
 const empty = require('../assets/img/empty.png');
+const userDefault = require('../assets/img/userDefault.png');
 
 export default {
   loading,
@@ -10,4 +11,5 @@ export default {
   add,
   aegis,
   empty,
+  userDefault,
 }

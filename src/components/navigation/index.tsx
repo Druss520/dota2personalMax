@@ -33,8 +33,21 @@ class TabBottom extends React.Component<Props, State> {
 
   }
 
+  private uriComponent:string = window.location.hash.substr(1);
+
+  private matchPath(): number {
+    let index = 0;
+    // console.log(this.uriComponent)
+    TitleArray.forEach((item, i) => {
+      if (item.path === this.uriComponent) {
+        index = i;
+      } 
+    })
+    return index;
+  }
+
   public state: State = {
-    activeIndex: global.Global.tabActive
+    activeIndex: this.matchPath()
   }
 
   public render(): JSX.Element {
@@ -47,10 +60,6 @@ class TabBottom extends React.Component<Props, State> {
               className={styles.box}
               key={i}
               onClick={() => {
-                this.setState({
-                  activeIndex: i
-                });
-                global.Global.tabActive = i;
                 history.replace(item.path);
               }}
               >

@@ -10,6 +10,7 @@ import MatchItem from '../../components/MatchItem';
 import ListPopdown from '../../components/ListPopdown';
 import * as classNames from 'classnames';
 import history from '../../history';
+import ImgView from '../../components/ImgView';
 
 interface State {
   fail: number;
@@ -33,53 +34,63 @@ interface State {
     } else {
       if (player.isFakeId || prevAccountId !== tempid) {
         player.previousAccountId = tempid;
-        player.getAllInfo().then((value) => {
-          // console.log(value);
-          if (value === 1) {
-            this.setState({
-              fail: 1
-            })
-          } else if (value === 2) {
-            this.setState({
-              fail: 2
-            })
-          } else {
-            player.isFakeId = false;
-            this.setState({
-              call1: true
-            })
-          }
-        });
-        if (heroes.heroArray) {
+        this.sendRequest();
+      } else {
+        // console.log('cache');
+        if (player.playerProfile && heroes.heroArray && player.winLose && player.recentMatch) {
           this.setState({
-            call2: true
+            call1: true,
+            call2: true,
           })
         } else {
-          heroes.getHeroInfo().then((value) => {
-            if(value) {
-              this.setState({
-                fail: 1
-              })
-            } else {
-              this.setState({
-                call2: true
-              })
-            }
-          })
+          this.sendRequest();
         }
-      } else {
-        console.log('cache');
-        this.setState({
-          call1: true,
-          call2: true,
-        })
       }
     }
   }
 
-  // public componentWillUnmount(): void {
+  public sendRequest(): void {
+    player.getAllInfo().then((value) => {
+      // console.log(value);
+      if (value === 1) {
+        this.setState({
+          fail: 1
+        })
+      } else if (value === 2) {
+        this.setState({
+          fail: 2
+        })
+      } else {
+        player.isFakeId = false;
+        this.setState({
+          call1: true
+        })
+      }
+    });
+    if (heroes.heroArray) {
+      this.setState({
+        call2: true
+      })
+    } else {
+      heroes.getHeroInfo().then((value) => {
+        if(value) {
+          this.setState({
+            fail: 1
+          })
+        } else {
+          this.setState({
+            call2: true
+          })
+        }
+      })
+    }
+  }
 
-  // }
+  public componentWillUnmount(): void {
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
 
   public render(): JSX.Element {
       return(
@@ -105,9 +116,14 @@ interface State {
             </div>
             <div className={styles.person}>
               <div className={styles.personLeft}>
-                <img
+                {/* <img
                   className={styles.personAvatar}
                   src={player.playerProfile.profile.avatarfull}
+                /> */}
+                <ImgView
+                className={styles.personAvatar}
+                src={player.playerProfile.profile.avatarfull}
+                fail={config.img.userDefault}
                 />
                 <div className={styles.personName}>
                   {player.playerProfile.profile.personaname}
