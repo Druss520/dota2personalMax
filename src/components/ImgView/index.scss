@@ -1,9 +1,13 @@
 .loading {
   display: flex;
-  background-color: #999;
+  background-color: #efefef;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  font-size: rem(22);
 }
 
 .fail {
   display: flex;
-  background-color: #999;
+  background-color: #bbb;
 }

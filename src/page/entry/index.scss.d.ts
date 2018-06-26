@@ -8,3 +8,4 @@ export const tip: string;
 export const row: string;
 export const input: string;
 export const button: string;
+export const goPro: string;

@@ -60,14 +60,20 @@ class ImgView extends React.Component<Props, State> {
 
   /** 图片的onerror事件 */
   private onImgError(): void {
+    console.log('1111');
     if (!this.isUnmount) {
       this.setState({ state: 'fail' });
     }
   }
 
   private getSrc(props: Props, src: string | undefined): string {
-    const url = src && isHttp(src) ? src : props.host + src;
-
+    // console.log(src, isHttp(src));
+    let url;
+    if (props.host) {
+      url = src && isHttp(src) ? src : props.host + src;
+    } else {
+      url = src;
+    }
     return url;
   }
 
@@ -102,7 +108,9 @@ class ImgView extends React.Component<Props, State> {
             [this.props.className]: true,
             [styles.loading]: true
           })}
-          ></div>
+          >
+          Loading...
+          </div>
         ) : (
           <div
           className={classNames({

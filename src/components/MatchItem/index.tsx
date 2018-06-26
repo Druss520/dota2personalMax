@@ -6,8 +6,12 @@ import heroStats, { Heroes } from '../../interface/heros';
 import TimeDif from '../../utils/timeDifference';
 import Duration from '../../utils/standardTime';
 import KDA from '../../utils/getKDA';
+import ImgView from '../ImgView';
+
+
 const lobby_type = require('../../assets/json/lobby_type.json');
 const gameMode = require('../../assets/json/game_mode.json');
+
 
 interface Props {
   match: RecentMatches;
@@ -28,9 +32,14 @@ const MatchItem = (props: Props) => {
   return (
     <div className={styles.block}>
       <div className={styles.left}>
-        <img
+        {/* <img
           className={styles.heroIcon}
           src={config.global.domain + hero.img}
+        /> */}
+        <ImgView
+        className={styles.heroIcon}
+        src={hero.img}
+        host={config.global.domain}
         />
         {
           (match.radiant_win && match.player_slot >= 0 && match.player_slot < 128) || (

@@ -55,7 +55,7 @@ class Entry extends React.Component<IAppProps,State>{
             }}
             >
             </div>
-            菜不菜战绩说了算
+            TI8他Lei了
           </div>
           <div className={styles.body}>
             <img
@@ -82,6 +82,13 @@ class Entry extends React.Component<IAppProps,State>{
                 this.onSubmit();
               }}
               ></div>
+            </div>
+            <div className={styles.goPro}
+            onClick={() => {
+              history.push('/proplayer');
+            }}
+            >
+              找不到id? 点我看看职业选手
             </div>
           </div>
         </div>
