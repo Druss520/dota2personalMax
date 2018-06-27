@@ -4,3 +4,30 @@
   width: 100vw;
   background-color: #fbfbfb;
 }
+
+.title {
+  display: flex;
+  padding: rem(10) rem(20);
+  justify-content: flex-start;
+  align-items: center;
+  font-size: rem(22);
+  color: #666;
+  background-color: #dfdff5;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-name {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.title-team {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}

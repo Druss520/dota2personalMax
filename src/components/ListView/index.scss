@@ -1,0 +1,25 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  margin-bottom: rem(100);
+}
+
+.show-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: rem(80);
+  width: 100%;
+  background-color: #fff;
+  font-size: rem(30);
+  color: #333;
+}
+
+.add-icon {
+  display: block;
+  height: rem(30);
+  width: rem(30);
+  background-size: 100%;
+  margin-right: rem(30);
+}
