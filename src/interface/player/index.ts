@@ -4,6 +4,7 @@ import getRecentMatch from './getRecentMatches';
 import getWinLose from './getWinLose';
 import {action} from 'mobx';
 import config from '../../config';
+import getTotalData from './getTotalData';
 
 interface Params {
   account_id: number;
@@ -63,10 +64,17 @@ export interface RecentMatches {
   party_size: number
 }
 
+export interface TotalData {
+  field: string,
+  n: number,
+  sum: number
+}
+
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
   @observable public winLose: WinLose | undefined;
   @observable public recentMatch: RecentMatches[] | undefined;
+  @observable public totalData: TotalData[] | undefined;
 
   // 192820722
   public params: Params = {
@@ -107,6 +115,17 @@ class Player {
     await  getRecentMatch(this.params).then((res) => {
       this.recentMatch = res.data;
       if (this.recentMatch.length === 0) {
+        typeNum = 2;
+        this.isFakeId = true;
+      }
+    }).catch((e) => {
+      console.log(e);
+      typeNum = 1;
+    })
+
+    await  getTotalData(this.params).then((res) => {
+      this.totalData = res.data;
+      if (this.totalData.length === 0) {
         typeNum = 2;
         this.isFakeId = true;
       }

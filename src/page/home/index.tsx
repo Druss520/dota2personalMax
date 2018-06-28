@@ -11,6 +11,8 @@ import ListPopdown from '../../components/ListPopdown';
 import * as classNames from 'classnames';
 import history from '../../history';
 import ImgView from '../../components/ImgView';
+import getRankTier from '../../utils/getRankTier';
+import DataBlock from '../../components/Datablock';
 
 interface State {
   fail: number;
@@ -26,18 +28,19 @@ interface State {
     call2: false,
   }
 
+  public tempid: string;
+
   public componentDidMount(): void {
-    const tempid = config.global.Global.accountId
+    this.tempid = config.global.Global.accountId
     const prevAccountId = player.previousAccountId;
-    if (tempid === '') {
+    if (this.tempid === '') {
       history.push('/entry');
     } else {
-      if (player.isFakeId || prevAccountId !== tempid) {
-        player.previousAccountId = tempid;
+      if (player.isFakeId || prevAccountId !== this.tempid) {
         this.sendRequest();
       } else {
         // console.log('cache');
-        if (player.playerProfile && heroes.heroArray && player.winLose && player.recentMatch) {
+        if (player.playerProfile && heroes.heroArray && player.winLose && player.totalData && player.recentMatch) {
           this.setState({
             call1: true,
             call2: true,
@@ -62,6 +65,7 @@ interface State {
         })
       } else {
         player.isFakeId = false;
+        player.previousAccountId = this.tempid;
         this.setState({
           call1: true
         })
@@ -115,52 +119,81 @@ interface State {
               Dota2 miniMax+
             </div>
             <div className={styles.person}>
-              <div className={styles.personLeft}>
-                {/* <img
+              <div className={styles.person1}>
+                <div className={styles.personLeft}>
+                  <ImgView
                   className={styles.personAvatar}
-                  src={player.playerProfile.profile.avatarfull}
-                /> */}
-                <ImgView
-                className={styles.personAvatar}
-                src={player.playerProfile.profile.avatarfull}
-                fail={config.img.userDefault}
-                />
-                <div className={styles.personName}>
-                  {player.playerProfile.profile.personaname}
+                  src={player.playerProfile.profile.avatarmedium}
+                  fail={config.img.userDefault}
+                  />
                 </div>
-                {
-                  player.playerProfile.profile.name ? (
-                    <div className={styles.proRow}>
-                    (
-                      <div className={classNames([
-                        'fa fa-id-card-o',
-                        styles.proIcon
-                      ])}></div>
-                      <div className={styles.proName}>
-                      {player.playerProfile.profile.name}
+                <div className={styles.personRight}>
+                  <div className={styles.personName}>
+                    {player.playerProfile.profile.personaname}
+                  </div>
+                  {
+                    player.playerProfile.profile.name ? (
+                      <div className={styles.proRow}>
+                        <div className={classNames([
+                          'fa fa-id-card-o',
+                          styles.proIcon
+                        ])}></div>
+                        <div className={styles.proName}>
+                        {player.playerProfile.profile.name}
+                        </div>
                       </div>
-                    )
-                    </div>
-                  ) : null
-                }
+                    ) : null
+                  }
+                  <div className={styles.row3}>
+                    <DataBlock name={'ID'} value={player.playerProfile.profile.account_id} flat/>
+                    <DataBlock name={'steamID'} value={player.playerProfile.profile.steamid} flat/>
+                  </div>
+                </div>
               </div>
-              <div className={styles.personRight}>
-                <div className={styles.personRightRow1}>
-                  MMR: {player.playerProfile.mmr_estimate.estimate}
+              <div className={styles.whiteLine}></div>
+              <div className={styles.person2}>
+                <div className={styles.generalLeft}>
+                  <DataBlock name={'胜场'} value={player.winLose.win}/>
+                  <DataBlock name={'负场'} value={player.winLose.lose} />
+                  <DataBlock name={'胜率'} value={(player.winLose.win/(player.winLose.win +
+                  player.winLose.lose)*100).toFixed(1) + '%'}/>
+                  <DataBlock name={'MMR'} value={player.playerProfile.mmr_estimate.estimate} />
+                  <DataBlock name={'地区'} value={player.playerProfile.profile.loccountrycode} />
+                  <DataBlock name={'击杀'} value={(player.totalData[0].sum/player.totalData[0].n).toFixed(1)} />
+                  <DataBlock name={'死亡'} value={(player.totalData[1].sum/player.totalData[1].n).toFixed(1)} />
+                  <DataBlock name={'助攻'} value={(player.totalData[2].sum/player.totalData[2].n).toFixed(1)} />
+                  <DataBlock name={'KDA'} value={(player.totalData[3].sum/player.totalData[3].n).toFixed(1)} />
+                  <DataBlock name={'GPM'} value={(player.totalData[4].sum/player.totalData[4].n).toFixed(1)} />
+                  <DataBlock name={'XPM'} value={(player.totalData[5].sum/player.totalData[5].n).toFixed(1)} />
+                  <DataBlock name={'正补'} value={(player.totalData[6].sum/player.totalData[6].n).toFixed(1)} />
+                  <DataBlock name={'反补'} value={(player.totalData[7].sum/player.totalData[7].n).toFixed(1)} />
+                  <DataBlock name={'线优'} value={(player.totalData[8].sum/player.totalData[8].n).toFixed(1)} />
+                  <DataBlock name={'耗时'} value={(player.totalData[9].sum/player.totalData[9].n/60).toFixed(1) + '分'} />
+                  <DataBlock name={'等级'} value={(player.totalData[10].sum/player.totalData[10].n).toFixed(1)} />
+                  <DataBlock name={'英雄伤害'} value={(player.totalData[11].sum/player.totalData[11].n).toFixed(1)} />
+                  <DataBlock name={'建筑伤害'} value={(player.totalData[12].sum/player.totalData[12].n).toFixed(1)} />
+                  <DataBlock name={'治疗'} value={(player.totalData[13].sum/player.totalData[13].n).toFixed(1)} />
+                  <DataBlock name={'刷野'} value={(player.totalData[16].sum/player.totalData[16].n).toFixed(1)} />
+                  <DataBlock name={'买假眼'} value={(player.totalData[19].sum/player.totalData[19].n).toFixed(1)} />
+                  <DataBlock name={'买真眼'} value={(player.totalData[20].sum/player.totalData[20].n).toFixed(1)} />
+                  <DataBlock name={'APM'} value={(player.totalData[28].sum/player.totalData[28].n).toFixed(1)} />
                 </div>
-                <div className={styles.personRightRow2}>
-                  天梯排名: {player.playerProfile.leaderboard_rank ? player.playerProfile.leaderboard_rank : '--'}
+                <div className={styles.generalRight}>
+                  <div
+                  className={styles.rankTier}
+                  style={{
+                    backgroundImage: `url('${getRankTier(player.playerProfile.rank_tier, player.playerProfile.leaderboard_rank)}')`
+                  }}
+                  >
+                  {
+                    player.playerProfile.leaderboard_rank ? (
+                      <div className={styles.rankNum}>{player.playerProfile.leaderboard_rank}</div>
+                    ) : null
+                  }
+                  </div>
                 </div>
-                <div className={styles.personRightRow2}>
-                  Region: {player.playerProfile.profile.loccountrycode ? player.playerProfile.profile.loccountrycode : '--'}
-                </div>
-                <div className={styles.personRightSmall}>
-                  Win: {player.winLose.win + '　'} Lose: {player.winLose.lose}
-                </div>
-                {/* <div className={styles.personRightSmall}>
-                  {player.playerProfile.profile.steamid}
-                </div> */}
               </div>
+              
             </div>
 
             <ListPopdown

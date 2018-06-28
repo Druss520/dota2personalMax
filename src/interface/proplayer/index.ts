@@ -30,7 +30,7 @@ export  interface ProPlayers {
 
 const teams = {
   'Big God': '',
-  'Old Boys': '',
+  'O1d Boys': '',
   'Vici Gaming':'',
   'LGD-GAMING':'',
   'PSG.LGD':'',
@@ -82,10 +82,10 @@ class ProPlayer {
     await getProPlayer().then((res) => {
       this.allPro= res.data;
       this.allPro.forEach((item) => {
+        if (item.name.indexOf(ob) >= 0) {
+          tempArray.push(item);
+        }
         if (item.name && item.team_name) {
-          if (item.name.indexOf(ob) >= 0) {
-            tempArray.push(item);
-          }
           if (teams[item.team_name] !== undefined) {
             tempArray.push(item);
           }

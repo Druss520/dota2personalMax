@@ -1,0 +1,24 @@
+.property-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: rem(30);
+  margin-bottom: rem(20);
+}
+
+.property-block-flat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.property {
+  font-size: rem(18);
+  color: #999;
+  margin-bottom: rem(4);
+}
+
+.property-value {
+  font-size: rem(20);
+  color: #333;
+}
