@@ -17,15 +17,23 @@ import DataBlock from '../../components/Datablock';
 interface State {
   fail: number;
   call1: boolean;
-  call2: boolean
+  call2: boolean;
+  dropdata: boolean;
 }
 
 @observer class App extends React.Component<IAppProps, State>{
+
+  constructor(props: IAppProps) {
+    super(props);
+
+    this.openData = this.openData.bind(this);
+  }
 
   public state: State = {
     fail: 0,
     call1: false,
     call2: false,
+    dropdata: false,
   }
 
   public tempid: string;
@@ -96,6 +104,12 @@ interface State {
     };
   }
 
+  public openData(): void {
+    this.setState({
+      dropdata: true
+    })
+  }
+
   public render(): JSX.Element {
       return(
         this.state.call1 && this.state.call2 ? (
@@ -113,7 +127,7 @@ interface State {
                 >
                 </div>
                 <div className={styles.switchText}>
-                  切换玩家
+                  {/* 切换玩家 */}
                 </div>
               </div>
               Dota2 miniMax+
@@ -123,7 +137,7 @@ interface State {
                 <div className={styles.personLeft}>
                   <ImgView
                   className={styles.personAvatar}
-                  src={player.playerProfile.profile.avatarmedium}
+                  src={player.playerProfile.profile.avatarfull}
                   fail={config.img.userDefault}
                   />
                 </div>
@@ -151,6 +165,7 @@ interface State {
                 </div>
               </div>
               <div className={styles.whiteLine}></div>
+              <div className={styles.dataTitle}>数据统计（场均）</div>
               <div className={styles.person2}>
                 <div className={styles.generalLeft}>
                   <DataBlock name={'胜场'} value={player.winLose.win}/>
@@ -158,25 +173,12 @@ interface State {
                   <DataBlock name={'胜率'} value={(player.winLose.win/(player.winLose.win +
                   player.winLose.lose)*100).toFixed(1) + '%'}/>
                   <DataBlock name={'MMR'} value={player.playerProfile.mmr_estimate.estimate} />
-                  <DataBlock name={'地区'} value={player.playerProfile.profile.loccountrycode} />
                   <DataBlock name={'击杀'} value={(player.totalData[0].sum/player.totalData[0].n).toFixed(1)} />
                   <DataBlock name={'死亡'} value={(player.totalData[1].sum/player.totalData[1].n).toFixed(1)} />
                   <DataBlock name={'助攻'} value={(player.totalData[2].sum/player.totalData[2].n).toFixed(1)} />
                   <DataBlock name={'KDA'} value={(player.totalData[3].sum/player.totalData[3].n).toFixed(1)} />
                   <DataBlock name={'GPM'} value={(player.totalData[4].sum/player.totalData[4].n).toFixed(1)} />
                   <DataBlock name={'XPM'} value={(player.totalData[5].sum/player.totalData[5].n).toFixed(1)} />
-                  <DataBlock name={'正补'} value={(player.totalData[6].sum/player.totalData[6].n).toFixed(1)} />
-                  <DataBlock name={'反补'} value={(player.totalData[7].sum/player.totalData[7].n).toFixed(1)} />
-                  <DataBlock name={'线优'} value={(player.totalData[8].sum/player.totalData[8].n).toFixed(1)} />
-                  <DataBlock name={'耗时'} value={(player.totalData[9].sum/player.totalData[9].n/60).toFixed(1) + '分'} />
-                  <DataBlock name={'等级'} value={(player.totalData[10].sum/player.totalData[10].n).toFixed(1)} />
-                  <DataBlock name={'英雄伤害'} value={(player.totalData[11].sum/player.totalData[11].n).toFixed(1)} />
-                  <DataBlock name={'建筑伤害'} value={(player.totalData[12].sum/player.totalData[12].n).toFixed(1)} />
-                  <DataBlock name={'治疗'} value={(player.totalData[13].sum/player.totalData[13].n).toFixed(1)} />
-                  <DataBlock name={'刷野'} value={(player.totalData[16].sum/player.totalData[16].n).toFixed(1)} />
-                  <DataBlock name={'买假眼'} value={(player.totalData[19].sum/player.totalData[19].n).toFixed(1)} />
-                  <DataBlock name={'买真眼'} value={(player.totalData[20].sum/player.totalData[20].n).toFixed(1)} />
-                  <DataBlock name={'APM'} value={(player.totalData[28].sum/player.totalData[28].n).toFixed(1)} />
                 </div>
                 <div className={styles.generalRight}>
                   <div
@@ -193,7 +195,35 @@ interface State {
                   </div>
                 </div>
               </div>
-              
+              {
+                this.state.dropdata ? (
+                  <div className={styles.person3}>
+                    <DataBlock name={'正补'} value={(player.totalData[6].sum/player.totalData[6].n).toFixed(1)} />
+                    <DataBlock name={'反补'} value={(player.totalData[7].sum/player.totalData[7].n).toFixed(1)} />
+                    <DataBlock name={'线优'} value={(player.totalData[8].sum/player.totalData[8].n).toFixed(1)} />
+                    <DataBlock name={'比赛时长'} value={(player.totalData[9].sum/player.totalData[9].n/60).toFixed(1) + '分'} />
+                    <DataBlock name={'英雄等级'} value={(player.totalData[10].sum/player.totalData[10].n).toFixed(1)} />
+                    <DataBlock name={'英雄伤害'} value={(player.totalData[11].sum/player.totalData[11].n).toFixed(1)} />
+                    <DataBlock name={'建筑伤害'} value={(player.totalData[12].sum/player.totalData[12].n).toFixed(1)} />
+                    <DataBlock name={'治疗'} value={(player.totalData[13].sum/player.totalData[13].n).toFixed(1)} />
+                    <DataBlock name={'刷野数'} value={(player.totalData[16].sum/player.totalData[16].n).toFixed(1)} />
+                    <DataBlock name={'买假眼'} value={(player.totalData[19].sum/player.totalData[19].n).toFixed(1)} />
+                    <DataBlock name={'买真眼'} value={(player.totalData[20].sum/player.totalData[20].n).toFixed(1)} />
+                    <DataBlock name={'APM'} value={(player.totalData[28].sum/player.totalData[28].n).toFixed(1)} />
+                    <DataBlock name={'地区'} value={player.playerProfile.profile.loccountrycode} />
+                  </div>
+                ) : (
+                  <div className={styles.person3Unopen}
+                  onClick={() => this.openData()}
+                  >
+                    <div className={classNames([
+                      'fa fa-angle-double-down',
+                      styles.icon
+                    ])}></div>
+                    更多数据
+                  </div>
+                )
+              }
             </div>
 
             <ListPopdown

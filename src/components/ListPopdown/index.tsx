@@ -55,7 +55,7 @@ class ListPopdown extends React.Component<Props, State> {
               )
             })
           ) : (
-            <div>
+            <div style={{backgroundColor: '#efeff5'}}>
               {
                 this.props.matches.map((match, i) => {
                   if (i<5) {

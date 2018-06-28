@@ -7,7 +7,7 @@
 
 .header {
   display: flex;
-  height: 100px;
+  height: rem(100);
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -19,20 +19,23 @@
 .switch1 {
   display: flex;
   position: absolute;
-  top: rem(50);
-  left: rem(30);
+  top: rem(25);
+  left: rem(40);
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: rem(10);
+  border-radius: 50%;
+  background-color: #fff;
 }
 
 .switch-icon {
-  font-size: rem(24);
-  color: #fff;
+  font-size: rem(14);
+  color: deepskyblue;
 }
 
 .switch-text {
-  font-size: rem(22);
+  font-size: rem(14);
   color: #fff;
 }
 
@@ -49,6 +52,7 @@
   margin-top: rem(20);
   background-color: #fff;
   padding: rem(20);
+  border-radius: rem(30);
 }
 
 .person-1 {
@@ -91,6 +95,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: rem(10);
 }
 
 .pro-row {
@@ -127,6 +132,14 @@
   border-bottom: solid rem(1) rgba(222,222,222,0.9);
 }
 
+.data-title {
+  display: flex;
+  width: 100%;
+  margin-bottom: rem(8);
+  justify-content: flex-start;
+  font-size: rem(22);
+  color: #333;
+}
 
 .person-2 {
   display: flex;
@@ -166,6 +179,30 @@
   transform: translate(-50%, -50%);
 }
 
+.person-3 {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: rem(10);
+  flex-wrap: wrap;
+}
+
+.person-3-unopen {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: rem(24);
+  color: #666;
+
+  .icon {
+    color: deepskyblue;
+    margin-right: rem(8);
+  }
+}
 
 :global(.loading) {
   display: flex;

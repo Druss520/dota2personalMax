@@ -15,11 +15,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: rem(80);
+  height: rem(60);
   width: 100%;
   background-color: #fff;
-  font-size: rem(30);
-  color: #333;
+  font-size: rem(26);
+  color: #666;
+  border-bottom-left-radius: rem(25);
+  border-bottom-right-radius: rem(25);
 }
 
 .add-icon {
@@ -27,7 +29,7 @@
   height: rem(30);
   width: rem(30);
   background-size: 100%;
-  margin-right: rem(30);
+  margin-right: rem(12);
 }
 
 .title {
