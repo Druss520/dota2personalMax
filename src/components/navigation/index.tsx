@@ -23,6 +23,11 @@ const TitleArray = [
     'title': '职业玩家',
     'icon': 'fa fa-users',
     'path': '/proplayer'
+  },
+  {
+    'title': '玩家查询',
+    'icon': 'fa fa-search',
+    'path': '/search'
   }
 ]
 

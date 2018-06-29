@@ -19,17 +19,27 @@ const StateView = (props: Props) => {
         />
       </div>
     ) : (
-      <div className={styles.reload}
-      onClick={() => {
-        window.location.reload();
-      }}
-      > 
+      state === 'empty' ? (
+        <div className={styles.reload}>
         <img
-        className={styles.fail}
-        src={img.fail}
+        className={styles.noSuch}
+        src={img.empty}
         />
-        点击重新加载
-      </div>
+        <div className={styles.hint}>未找到玩家信息</div>
+        </div>
+      ) : (
+        <div className={styles.reload}
+        onClick={() => {
+          window.location.reload();
+        }}
+        > 
+          <img
+          className={styles.fail}
+          src={img.fail}
+          />
+          点击重新加载
+        </div>
+      )
     )
   )
 }

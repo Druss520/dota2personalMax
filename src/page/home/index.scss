@@ -270,3 +270,15 @@ body {
   letter-spacing: rem(2);
   padding: rem(15);
 }
+
+.peer {
+  display: flex;
+  width: 100%;
+  height: rem(80);
+  background-color: azure;
+  font-size: rem(28);
+  color: #666;
+  justify-content: center;
+  align-items: center;
+  margin: rem(20) 0;
+}

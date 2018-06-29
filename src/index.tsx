@@ -9,6 +9,8 @@ import App from './page/home';
 import history from './history';
 import TabBottom from './components/navigation';
 import ProPlayers from './page/proplayer';
+import Search from './page/search';
+import Peer from './page/peers';
 
 ReactDOM.render(
   <React.Fragment>
@@ -17,12 +19,15 @@ ReactDOM.render(
       <Route exact path="/" component={App} />
       <Route exact path="/entry" component={Entry} />
       <Route exact path="/proplayer" component={ProPlayers} />
+      <Route exact path="/search" component={Search} />
+      <Route exact path="/peer" component={Peer} />
       </div>
     </Router>
     <Router history={history}>
       <div>
       <Route exact path="/" component={TabBottom} />
       <Route exact path="/proplayer" component={TabBottom} />
+      <Route exact path="/search" component={TabBottom} />
       </div>
     </Router>
   </React.Fragment>,

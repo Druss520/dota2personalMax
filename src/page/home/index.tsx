@@ -231,6 +231,15 @@ interface State {
                 ) : null
               }
             </div>
+            
+            <div
+            className={styles.peer}
+            onClick={() => {
+              history.push('/peer');
+            }}
+            >
+              队友
+            </div>
 
             <ListPopdown
             matches={player.recentMatch}

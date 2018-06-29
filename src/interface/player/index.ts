@@ -5,6 +5,7 @@ import getWinLose from './getWinLose';
 import {action} from 'mobx';
 import config from '../../config';
 import getTotalData from './getTotalData';
+import getPeers from './getPeers';
 
 interface Params {
   account_id: number;
@@ -70,11 +71,31 @@ export interface TotalData {
   sum: number
 }
 
+
+export interface Peers  {
+  account_id: number,
+  last_played: number,
+  win: number,
+  games: number,
+  with_win: number,
+  with_games: number,
+  against_win: number,
+  against_games: number,
+  with_gpm_sum: number,
+  with_xpm_sum: number,
+  personaname: string,
+  last_login: string,
+  avatar: string,
+  avatarfull: string
+}
+
+
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
   @observable public winLose: WinLose | undefined;
   @observable public recentMatch: RecentMatches[] | undefined;
   @observable public totalData: TotalData[] | undefined;
+  @observable public peers: Peers[] | undefined;
 
   // 192820722
   public params: Params = {
@@ -135,6 +156,22 @@ class Player {
     })
 
     return typeNum;
+  }
+
+  @action public async PeerPage(): Promise<number> {
+    let errornum = 0;
+
+    await getPeers(this.params).then((res) => {
+      this.peers = res.data;
+      if (this.peers.length === 0) {
+        errornum = 2;
+      }
+    }).catch(e => {
+      console.log(e);
+      errornum = 1;
+    })
+
+    return errornum;
   }
 
 }

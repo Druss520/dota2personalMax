@@ -90,6 +90,13 @@ class Entry extends React.Component<IAppProps,State>{
             >
               找不到id? 点我看看职业选手
             </div>
+            <div className={styles.goSearch}
+            onClick={() => {
+              history.push('/search');
+            }}
+            >
+              点我搜索Steam昵称
+            </div>
           </div>
         </div>
       )

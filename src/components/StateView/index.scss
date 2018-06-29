@@ -23,3 +23,27 @@
   background-size: 100% 100%;
   margin-bottom: 15px;
 }
+
+.reload {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-such {
+  height: rem(230);
+  width: rem(220);
+  background-size: 99% 99%;
+  margin-bottom: rem(20);
+}
+
+.hint {
+  font-size: rem(28);
+  color: #666;
+  margin-bottom: rem(35);
+}
