@@ -22,6 +22,7 @@ export const generalRight: string;
 export const rankTier: string;
 export const rankNum: string;
 export const person3: string;
+export const person3Change: string;
 export const person3Unopen: string;
 export const icon: string;
 export const emptyPage: string;

@@ -27,6 +27,7 @@
   padding: rem(10);
   border-radius: 50%;
   background-color: #fff;
+  box-shadow: 0 0 rem(50) rem(3) #ccc ;
 }
 
 .switch-icon {
@@ -81,7 +82,6 @@
 .person-right {
   display: flex;
   width: 76%;
-  height: rem(130);
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -180,14 +180,24 @@
 }
 
 .person-3 {
+  visibility: hidden;
   display: flex;
   width: 100%;
+  height: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   margin-bottom: rem(10);
   flex-wrap: wrap;
+  transition-property: height;
+  transition: all 0.6s ease-in;
 }
+
+.person3-change {
+  visibility: visible;
+  height: rem(220);
+}
+
 
 .person-3-unopen {
   display: flex;

@@ -132,7 +132,9 @@ interface State {
               </div>
               Dota2 miniMax+
             </div>
-            <div className={styles.person}>
+            <div className={classNames({
+              [styles.person]: true,
+            })}>
               <div className={styles.person1}>
                 <div className={styles.personLeft}>
                   <ImgView
@@ -195,24 +197,28 @@ interface State {
                   </div>
                 </div>
               </div>
+              
+              <div className={classNames({
+                [styles.person3]: true,
+                [styles.person3Change]: this.state.dropdata
+              })}>
+                <DataBlock name={'正补'} value={(player.totalData[6].sum/player.totalData[6].n).toFixed(1)} />
+                <DataBlock name={'反补'} value={(player.totalData[7].sum/player.totalData[7].n).toFixed(1)} />
+                <DataBlock name={'线优'} value={(player.totalData[8].sum/player.totalData[8].n).toFixed(1) + '%'} />
+                <DataBlock name={'比赛时长'} value={(player.totalData[9].sum/player.totalData[9].n/60).toFixed(1) + '分'} />
+                <DataBlock name={'英雄等级'} value={(player.totalData[10].sum/player.totalData[10].n).toFixed(1)} />
+                <DataBlock name={'英雄伤害'} value={(player.totalData[11].sum/player.totalData[11].n).toFixed(1)} />
+                <DataBlock name={'建筑伤害'} value={(player.totalData[12].sum/player.totalData[12].n).toFixed(1)} />
+                <DataBlock name={'治疗'} value={(player.totalData[13].sum/player.totalData[13].n).toFixed(1)} />
+                <DataBlock name={'刷野数'} value={(player.totalData[16].sum/player.totalData[16].n).toFixed(1)} />
+                <DataBlock name={'买假眼'} value={(player.totalData[19].sum/player.totalData[19].n).toFixed(1)} />
+                <DataBlock name={'买真眼'} value={(player.totalData[20].sum/player.totalData[20].n).toFixed(1)} />
+                <DataBlock name={'APM'} value={(player.totalData[28].sum/player.totalData[28].n).toFixed(1)} />
+                <DataBlock name={'地区'} value={player.playerProfile.profile.loccountrycode} />
+              </div>
+              
               {
-                this.state.dropdata ? (
-                  <div className={styles.person3}>
-                    <DataBlock name={'正补'} value={(player.totalData[6].sum/player.totalData[6].n).toFixed(1)} />
-                    <DataBlock name={'反补'} value={(player.totalData[7].sum/player.totalData[7].n).toFixed(1)} />
-                    <DataBlock name={'线优'} value={(player.totalData[8].sum/player.totalData[8].n).toFixed(1)} />
-                    <DataBlock name={'比赛时长'} value={(player.totalData[9].sum/player.totalData[9].n/60).toFixed(1) + '分'} />
-                    <DataBlock name={'英雄等级'} value={(player.totalData[10].sum/player.totalData[10].n).toFixed(1)} />
-                    <DataBlock name={'英雄伤害'} value={(player.totalData[11].sum/player.totalData[11].n).toFixed(1)} />
-                    <DataBlock name={'建筑伤害'} value={(player.totalData[12].sum/player.totalData[12].n).toFixed(1)} />
-                    <DataBlock name={'治疗'} value={(player.totalData[13].sum/player.totalData[13].n).toFixed(1)} />
-                    <DataBlock name={'刷野数'} value={(player.totalData[16].sum/player.totalData[16].n).toFixed(1)} />
-                    <DataBlock name={'买假眼'} value={(player.totalData[19].sum/player.totalData[19].n).toFixed(1)} />
-                    <DataBlock name={'买真眼'} value={(player.totalData[20].sum/player.totalData[20].n).toFixed(1)} />
-                    <DataBlock name={'APM'} value={(player.totalData[28].sum/player.totalData[28].n).toFixed(1)} />
-                    <DataBlock name={'地区'} value={player.playerProfile.profile.loccountrycode} />
-                  </div>
-                ) : (
+                !this.state.dropdata ? (
                   <div className={styles.person3Unopen}
                   onClick={() => this.openData()}
                   >
@@ -222,7 +228,7 @@ interface State {
                     ])}></div>
                     更多数据
                   </div>
-                )
+                ) : null
               }
             </div>
 
