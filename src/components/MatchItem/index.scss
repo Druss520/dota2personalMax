@@ -4,7 +4,7 @@
   justify-content: space-between;
   background-color: #fff;
   border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
-  padding: rem(25);
+  padding: rem(20);
 }
 
 .left {
@@ -25,12 +25,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: rem(30);
+  font-size: rem(26);
   font-weight: bold;
-  background-color: rgb(30, 235, 74);
+  background-color: mediumseagreen;
   color: #fff;
-  height: rem(50);
-  width: rem(50);
+  height: rem(40);
+  width: rem(40);
   margin-right: rem(20);
 }
 
@@ -38,12 +38,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: rem(30);
+  font-size: rem(26);
   font-weight: bold;
   background-color: #bbb;
   color: #fff;
-  height: rem(50);
-  width: rem(50);
+  height: rem(40);
+  width: rem(40);
   margin-right: rem(20);
 }
 
@@ -80,8 +80,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: rem(20);
-  font-size: rem(28);
+  margin-bottom: rem(10);
+  font-size: rem(24);
   color: #333;
 }
 

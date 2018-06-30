@@ -1,0 +1,106 @@
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
+  padding: rem(20) rem(20);
+}
+
+.avatar {
+  width: 15%;
+  height: rem(64);
+  width: rem(64);
+  background-size: 100% 100%;
+}
+
+.name {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: rem(24);
+  color: #333;
+}
+
+
+.outer-right {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.outer-right-shrink {
+  width: 89%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.outer-left {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.check-icon {
+  color: orange;
+}
+
+.left {
+  width: 35%;
+  height: rem(64);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.id {
+  justify-content: center;
+  align-items: center;
+  font-size: rem(20);
+  color: #666;
+  word-break: break-all;
+}
+
+.right {
+  display: flex;
+  width: 50%;
+  height: rem(64);
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.up-row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: #666;
+  font-size: rem(22);
+}
+
+.bottom-row-frame {
+  width: 100%;
+  height: rem(6);
+  border-radius: rem(3);
+  background-color: #efeff5;
+}
+
+.bottom-row {
+  width: 100%;
+  height: rem(6);
+  border-radius: rem(3);
+  background-color: deepskyblue;
+}
+
+.up-row-left {
+  width: 50%;
+}
+
+

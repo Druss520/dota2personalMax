@@ -59,4 +59,11 @@ $prefix: yj-component-toast;
     opacity: 1;
   }
 
+  &-success {
+    color: rgb(94, 218, 90)
+  }
+
+  &-fail {
+    color: gold
+  }
 }

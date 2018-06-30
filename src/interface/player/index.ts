@@ -162,9 +162,15 @@ class Player {
     let errornum = 0;
 
     await getPeers(this.params).then((res) => {
-      this.peers = res.data;
-      if (this.peers.length === 0) {
+      const temp: Peers[] = res.data
+      if (temp.length === 0) {
         errornum = 2;
+      } else {
+        if (temp.length <= 20) {
+          this.peers = temp;
+        } else {
+          this.peers = temp.slice(0,20);
+        }
       }
     }).catch(e => {
       console.log(e);

@@ -45,9 +45,9 @@ class Toast extends React.PureComponent<Props> {
     fade: false
   };
 
-  public static show = (content: string, duration?: number) => {
+  public static show = (content: string, duration?: number, type?: 'success' | 'fail') => {
     ReactDom.render((
-      <Toast duration={duration}>{content}</Toast>
+      <Toast duration={duration} type={type}>{content}</Toast>
     ), getContainer());
   }
 

@@ -95,7 +95,7 @@ class Entry extends React.Component<IAppProps,State>{
               history.push('/search');
             }}
             >
-              点我搜索Steam昵称
+              点我Steam昵称搜索玩家
             </div>
           </div>
         </div>

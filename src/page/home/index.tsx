@@ -238,6 +238,10 @@ interface State {
               history.push('/peer');
             }}
             >
+              <img
+              className={styles.peerIcon}
+              src={config.img.tp}
+              />
               队友
             </div>
 
