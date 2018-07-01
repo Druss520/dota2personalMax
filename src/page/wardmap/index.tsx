@@ -5,14 +5,12 @@ import * as classNames from 'classnames';
 import history from '../../history';
 import player from '../../interface/player';
 import StateView from '../../components/StateView';
-import PeerItem from '../../components/peersItem';
-import Dialog from '../../components/dialog';
-import Toast from '../../components/Toast';
 import ImgView from '../../components/ImgView';
-import { Peers } from '../../interface/player';
-import getPeers from '../../interface/player/getPeers';
 import { observer } from 'mobx-react';
 import { observable, action } from 'mobx';
+// import * as Echarts from 'echarts';
+import unpackPositionData from '../../utils/unpackPositonData';
+import HeatMap from '../../components/Heatmap';
 
 interface State {
   call1: boolean,
@@ -34,6 +32,17 @@ interface State {
 
 
   public componentDidMount(): void {
+    player.wardPage().then((value) => {
+      if (value === 1) {
+        this.setState({
+          fail: 1
+        })
+      } else {
+        this.setState({
+          call1: true
+        })
+      }
+    })
 
   }
 
@@ -57,10 +66,55 @@ interface State {
             }}
             >
             </div>
-            敬请期待
+            眼位热力图
           </div>
           
-        </div>
+         {
+          this.state.call1 ? (
+          <div className={styles.wardmap}>
+            <div className={styles.title}>
+              <div
+              className={styles.icon}
+              style={{
+                backgroundImage: `url('${config.img.jiayan}')`
+              }}
+              >
+              </div>
+              侦查守卫
+            </div>
+            <HeatMap
+            points={unpackPositionData(player.wardmap.obs)}
+            width={window.screen.width-50}
+            name={'obs'}
+            />
+
+            <div className={styles.title}>
+            <div
+              className={styles.icon}
+              style={{
+                backgroundImage: `url('${config.img.zhenyan}')`
+              }}
+              >
+              </div>
+              岗哨守卫
+            </div>
+            <HeatMap
+            points={unpackPositionData(player.wardmap.sen)}
+            width={window.screen.width-50}
+            name={'sen'}
+            />
+          </div>
+          ) : this.state.fail === 1 ? (
+            <StateView state={'fail'} />
+          ) : (
+            this.state.fail === 2 ? (
+              <StateView state={'empty'} />
+            ) : (
+              <StateView state={'loading'} />
+            )
+          )
+        }
+        </div> 
       )
     }
   }

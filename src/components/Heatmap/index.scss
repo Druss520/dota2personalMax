@@ -1,0 +1,18 @@
+.map-frame {
+  display: block;
+  margin-bottom: rem(30);
+  justify-content: center;
+  align-items: center;
+}
+
+.heatmap {
+  background-size: 100% 100%;
+  z-index: 10;
+}
+
+.map {
+  background-size: 100% 100%;
+  z-index: 1;
+}
+
+

@@ -6,6 +6,7 @@ import {action} from 'mobx';
 import config from '../../config';
 import getTotalData from './getTotalData';
 import getPeers from './getPeers';
+import getWard from './getward';
 
 interface Params {
   account_id: number;
@@ -89,6 +90,11 @@ export interface Peers  {
   avatarfull: string
 }
 
+export interface Wardmap {
+    obs: {},
+    sen: {}
+}
+
 
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
@@ -96,6 +102,7 @@ class Player {
   @observable public recentMatch: RecentMatches[] | undefined;
   @observable public totalData: TotalData[] | undefined;
   @observable public peers: Peers[] | undefined;
+  public wardmap: Wardmap | undefined;
 
   // 192820722
   public params: Params = {
@@ -172,6 +179,19 @@ class Player {
           this.peers = temp.slice(0,20);
         }
       }
+    }).catch(e => {
+      console.log(e);
+      errornum = 1;
+    })
+
+    return errornum;
+  }
+
+  public async wardPage(): Promise<number> {
+    let errornum = 0;
+
+    await getWard(this.params).then((res) => {
+      this.wardmap = res.data;
     }).catch(e => {
       console.log(e);
       errornum = 1;

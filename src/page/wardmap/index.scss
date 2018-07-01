@@ -18,6 +18,7 @@
   font-size: rem(30);
   letter-spacing: rem(1);
   color: #fff;
+  z-index: 100;
 }
 
 .back {
@@ -28,3 +29,32 @@
   color: #fff;
 }
 
+.title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: rem(20);
+  height: rem(60);
+  font-size: rem(30);
+  color: #666;
+
+  .icon {
+    display: block;
+    height: rem(50);
+    width: rem(50);
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    margin-right: rem(8);
+  }
+}
+
+
+.wardmap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

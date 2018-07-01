@@ -49,6 +49,7 @@ const tp = require('../assets/img/item/Town_Portal_Scroll_icon.png');
 const buxiudun = require('../assets/img/item/Aegis_of_the_Immortal_icon.png');
 const jiayan = require('../assets/img/item/Observer_Ward_icon.png');
 const sanyeduijian = require('../assets/img/item/Sange_and_Yasha_icon.png');
+const zhenyan = require('../assets/img/item/Sentry_Ward_icon.png');
 
 export default {
   loading,
@@ -102,4 +103,5 @@ export default {
   buxiudun,
   jiayan,
   sanyeduijian,
+  zhenyan,
 }
