@@ -11,6 +11,7 @@ import TabBottom from './components/navigation';
 import ProPlayers from './page/proplayer';
 import Search from './page/search';
 import Peer from './page/peers';
+import Wardmap from './page/wardmap';
 
 ReactDOM.render(
   <React.Fragment>
@@ -21,6 +22,9 @@ ReactDOM.render(
       <Route exact path="/proplayer" component={ProPlayers} />
       <Route exact path="/search" component={Search} />
       <Route exact path="/peer" component={Peer} />
+      <Route exact path="/wardmap" component={Wardmap} />
+      <Route exact path="/record" component={Wardmap} />
+      <Route exact path="/histogram" component={Wardmap} />
       </div>
     </Router>
     <Router history={history}>

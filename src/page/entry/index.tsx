@@ -55,7 +55,13 @@ class Entry extends React.Component<IAppProps,State>{
             }}
             >
             </div>
-            TI8他Lei了
+            <div
+            onClick={() => {
+              window.location.href = 'https://www.pornhub.com/';
+            }}
+            >
+              TI8他Lei了
+            </div>
           </div>
           <div className={styles.body}>
             <img

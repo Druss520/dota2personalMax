@@ -21,6 +21,54 @@ interface State {
   dropdata: boolean;
 }
 
+interface ThemeBlock {
+  name: string;
+  img: string;
+  path: string;
+}
+
+const blockArray: ThemeBlock[] = [
+  {
+    name: '队友榜',
+    img: config.img.tp,
+    path: '/peer'
+  },
+  {
+    name: '眼位图',
+    img: config.img.jiayan,
+    path: '/wardmap'
+  },{
+    name: '记录榜',
+    img: config.img.buxiudun,
+    path: '/record'
+  },{
+    name: '直方图',
+    img: config.img.sanyeduijian,
+    path: '/histogram'
+  }
+]
+
+const ThemeBlock = (item: ThemeBlock, i: number) => {
+  return (
+    <div
+    key={i}
+    className={styles.peer}
+    onClick={() => {
+      history.push(item.path);
+    }}
+    >
+      <div
+      className={styles.peerIcon}
+      style={{
+        backgroundImage: `url('${item.img}')`
+      }}
+      >
+      </div>
+      {item.name}
+    </div>
+  )
+}
+
 @observer class App extends React.Component<IAppProps, State>{
 
   constructor(props: IAppProps) {
@@ -130,7 +178,9 @@ interface State {
                   {/* 切换玩家 */}
                 </div>
               </div>
-              Dota2 miniMax+
+              <div>
+                Visual Dota
+              </div>
             </div>
             <div className={classNames({
               [styles.person]: true,
@@ -233,16 +283,15 @@ interface State {
             </div>
             
             <div
-            className={styles.peer}
-            onClick={() => {
-              history.push('/peer');
-            }}
+            className={styles.peerFrame}
             >
-              <img
-              className={styles.peerIcon}
-              src={config.img.tp}
-              />
-              队友
+              {
+                blockArray.map((item,i) => {
+                  return (
+                    ThemeBlock(item, i)
+                  )
+                })
+              }
             </div>
 
             <ListPopdown

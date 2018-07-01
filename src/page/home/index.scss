@@ -271,21 +271,33 @@ body {
   padding: rem(15);
 }
 
+.peer-frame {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: rem(20) 0;
+}
+
 .peer {
   display: flex;
-  width: 100%;
+  width: 49.8%;
   height: rem(80);
   background-color: #fff;
-  font-size: rem(28);
-  color: #666;
+  font-size: rem(24);
+  color: slategrey;
   justify-content: center;
   align-items: center;
-  margin: rem(20) 0;
+  border-right: solid rem(1) rgba(222,222,222,0.9);
+  border-bottom: solid rem(1) rgba(222,222,222,0.9);
 
   .peer-icon {
+    display: block;
     height: rem(60);
     width: rem(60);
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
     border-radius: 50%;
     margin-right: rem(8);
   }

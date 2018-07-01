@@ -46,6 +46,9 @@ const immortal2 = require('../assets/img/rankTier/180px-SeasonalRankTop1.png');
 const immortal3 = require('../assets/img/rankTier/180px-SeasonalRankTop2.png');
 const immortal4 = require('../assets/img/rankTier/180px-SeasonalRankTop3.png');
 const tp = require('../assets/img/item/Town_Portal_Scroll_icon.png');
+const buxiudun = require('../assets/img/item/Aegis_of_the_Immortal_icon.png');
+const jiayan = require('../assets/img/item/Observer_Ward_icon.png');
+const sanyeduijian = require('../assets/img/item/Sange_and_Yasha_icon.png');
 
 export default {
   loading,
@@ -96,4 +99,7 @@ export default {
   immortal3,
   immortal4,
   tp,
+  buxiudun,
+  jiayan,
+  sanyeduijian,
 }

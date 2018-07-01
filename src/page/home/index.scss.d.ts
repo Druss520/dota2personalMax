@@ -30,5 +30,6 @@ export const reload: string;
 export const noSuch: string;
 export const hint: string;
 export const btnGo: string;
+export const peerFrame: string;
 export const peer: string;
 export const peerIcon: string;

@@ -57,13 +57,13 @@ const teams = {
   // 'TAICHI GAMING':'',
   // 'Winstrike':'',
   // 'Natus Vincere':'',
-  'Digital Chaos': '',
+  // 'Digital Chaos': '',
   'Eclipse':'',
   // 'TEAM EVER':'',
   // 'Team Max':'',
   'iG.Vitality':'',
   'VGJ Thunder':'',
-  'Immortals':'',
+  // 'Immortals':'',
   'Team Serenity':'',
   // 'CDEC Gaming':'',
 }
@@ -85,7 +85,7 @@ class ProPlayer {
         if (item.name.indexOf(ob) >= 0) {
           tempArray.push(item);
         }
-        if (item.name && item.team_name) {
+        if (item.name && item.team_name && item.steamid) {
           if (teams[item.team_name] !== undefined) {
             tempArray.push(item);
           }
