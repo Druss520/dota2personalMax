@@ -12,6 +12,8 @@ import ProPlayers from './page/proplayer';
 import Search from './page/search';
 import Peer from './page/peers';
 import Wardmap from './page/wardmap';
+import Record from './page/record';
+import Histogram from './page/histogram';
 
 ReactDOM.render(
   <React.Fragment>
@@ -23,8 +25,8 @@ ReactDOM.render(
       <Route exact path="/search" component={Search} />
       <Route exact path="/peer" component={Peer} />
       <Route exact path="/wardmap" component={Wardmap} />
-      <Route exact path="/record" component={Wardmap} />
-      <Route exact path="/histogram" component={Wardmap} />
+      <Route exact path="/record" component={Record} />
+      <Route exact path="/histogram" component={Histogram} />
       </div>
     </Router>
     <Router history={history}>

@@ -5,13 +5,14 @@ import ImgView from '../ImgView';
 // import history from '../../history';
 import Toast from '../Toast';
 import * as classNames from 'classnames';
-import * as Hmap from 'heatmap.js';
+import * as h337 from 'heatmap.js';
 
 
 interface Props {
   points:{}[];
   width: number;
   name: string;
+  imgClick: (name: string) => void;
 }
 
 function scaleAndExtrema(points, scalef, max, shift) {
@@ -29,16 +30,6 @@ function scaleAndExtrema(points, scalef, max, shift) {
   };
 }
 
-const drawHeatmap = ({
-  points = [],
-  width,
-}, heatmap) => {
-  // scale points by width/127 units to fit to size of map
-  // offset points by 25 units to increase visibility
-  const adjustedData = scaleAndExtrema(points, width / 127, null, 25);
-  heatmap.setData(adjustedData);
-};
-
 
 class Heatmap extends React.Component <Props> {
   
@@ -47,40 +38,46 @@ class Heatmap extends React.Component <Props> {
 
   }
 
-  public heatmap: Hmap.Heatmap<'value','x','y'>;
+  public heatmap: h337.Heatmap<"value", "x", "y"> = undefined;
+  public id: string = this.props.name;
 
   componentDidMount() {
-    this.heatmap = Hmap.create({
-      container: this.refs[this.props.name] as HTMLElement,
+    this.heatmap = h337.create({
+      container: document.getElementById(this.id),
       radius: 15 * (this.props.width / 600),
     });
-    drawHeatmap(this.props, this.heatmap);
+    const adjustedData = scaleAndExtrema(this.props.points, this.props.width / 127, null, 25);
+    // console.log(this.props.width, adjustedData, 1111111);
+    this.heatmap.setData(adjustedData);
   }
+
   componentDidUpdate() {
-    drawHeatmap(this.props, this.heatmap);
+    const adjustedData = scaleAndExtrema(this.props.points, this.props.width / 127, null, 25);
+    // console.log(this.props.width, adjustedData, this.props,name);
+    this.heatmap.setData(adjustedData);
   }
 
   
   public render(): JSX.Element {
 
     return (
-      <div className={styles.mapFrame}
-      ref={this.props.name}
+      <div
+      className={styles.mapFrame}
+      id= {this.id}
       style={{
         width: this.props.width,
         height: this.props.width,
       }}
+      onClick={() => this.props.imgClick(this.props.name)}
       >
-        <div className={styles.heatmap}>
-          <img
-            className={styles.map}
-            style={{
-              width: this.props.width,
-              height: this.props.width,
-            }}
-            src={config.img.minimap}
-          />
-        </div>
+        <img
+          className={styles.map}
+          style={{
+            width: this.props.width,
+            height: this.props.width,
+          }}
+          src={config.img.minimap}
+        />
       </div>
     )
   }

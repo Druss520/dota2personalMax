@@ -15,6 +15,10 @@ import HeatMap from '../../components/Heatmap';
 interface State {
   call1: boolean,
   fail: number,
+  img1Width: number;
+  img2Width: number;
+  key1: string;
+  key2: string;
 }
 
 
@@ -22,14 +26,18 @@ interface State {
 
   constructor(props: IAppProps) {
     super(props);
+
+    this.onImgClick = this.onImgClick.bind(this);
   }
 
   public state: State = {
     call1: false,
     fail: 0,
+    img1Width: window.screen.width-50,
+    img2Width: window.screen.width-50,
+    key1: Math.random().toString(),
+    key2: Math.random().toString()
   }
-
-
 
   public componentDidMount(): void {
     player.wardPage().then((value) => {
@@ -52,6 +60,21 @@ interface State {
     }
   }
 
+  public onImgClick(name: string): void {
+    // console.log(name);
+    if (name === 'obs') {
+      this.setState({
+        img1Width: this.state.img1Width === 600 ? window.screen.width-50 : 600,
+        key1: Math.random().toString(),
+      })
+    } else {
+      this.setState({
+        img2Width: this.state.img2Width === 600 ? window.screen.width-50 : 600,
+        key2: Math.random().toString()
+      })
+    }
+  }
+
 
   public render(): JSX.Element {
       return(
@@ -69,7 +92,7 @@ interface State {
             眼位热力图
           </div>
           
-         {
+        {
           this.state.call1 ? (
           <div className={styles.wardmap}>
             <div className={styles.title}>
@@ -82,12 +105,15 @@ interface State {
               </div>
               侦查守卫
             </div>
+            <div className={styles.overflow}>
             <HeatMap
             points={unpackPositionData(player.wardmap.obs)}
-            width={window.screen.width-50}
+            width={this.state.img1Width}
+            imgClick={this.onImgClick}
             name={'obs'}
+            key={this.state.key1}
             />
-
+            </div>
             <div className={styles.title}>
             <div
               className={styles.icon}
@@ -98,11 +124,15 @@ interface State {
               </div>
               岗哨守卫
             </div>
+            <div className={styles.overflow}>
             <HeatMap
             points={unpackPositionData(player.wardmap.sen)}
-            width={window.screen.width-50}
+            width={this.state.img2Width}
+            imgClick={this.onImgClick}
             name={'sen'}
+            key={this.state.key2}
             />
+            </div>
           </div>
           ) : this.state.fail === 1 ? (
             <StateView state={'fail'} />

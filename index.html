@@ -14,15 +14,15 @@
     <!-- <link rel="stylesheet" href="/dist/css/main.css" /> -->
     <script>
         // 仅用于开发环境和预发布环境，正式环境直接引用
-        (function() {
-          const scriptTime = new Date().getTime();
-          const head = document.getElementsByTagName('head')[0];
-          const link = document.createElement('link');
-          link.rel = 'stylesheet';
-          link.href = '/dist/css/main.css?time=' + scriptTime;
-          head.appendChild(link);
-        })();
-      </script>
+    (function() {
+        const scriptTime = new Date().getTime();
+        const head = document.getElementsByTagName('head')[0];
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/dist/css/main.css?time=' + scriptTime;
+        head.appendChild(link);
+    })();
+    </script>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 
@@ -31,15 +31,15 @@
     <!-- <script type="text/javascript" src="/dist/index.js"></script> -->
     <script>
         // 仅用于开发环境和预发布环境，正式环境直接引用
-        (function() {
-          const scriptTime = new Date().getTime();
-          const body = document.getElementsByTagName('body')[0];
-          const script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = '/dist/index.js?time=' + scriptTime;
-          body.appendChild(script);
-        })();
-      </script>
+    (function() {
+        const scriptTime = new Date().getTime();
+        const body = document.getElementsByTagName('body')[0];
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '/dist/index.js?time=' + scriptTime;
+        body.appendChild(script);
+    })();
+    </script>
     <script type="text/javascript">
         var images = new Array()
 

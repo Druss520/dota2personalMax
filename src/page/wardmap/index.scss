@@ -57,4 +57,14 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+
+  .overflow {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    position: relative;
+    overflow: scroll;
+    min-width: 0;
+    min-height: 0;
+  }
 }

@@ -4,3 +4,4 @@ export const back: string;
 export const title: string;
 export const icon: string;
 export const wardmap: string;
+export const overflow: string;

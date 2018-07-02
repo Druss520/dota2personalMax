@@ -25,6 +25,7 @@ interface ThemeBlock {
   name: string;
   img: string;
   path: string;
+  href?: string;
 }
 
 const blockArray: ThemeBlock[] = [
@@ -38,9 +39,10 @@ const blockArray: ThemeBlock[] = [
     img: config.img.jiayan,
     path: '/wardmap'
   },{
-    name: '记录榜',
+    name: '记录榜(外链)',
     img: config.img.buxiudun,
-    path: '/record'
+    path: '/record',
+    href: `https://www.opendota.com/players/${parseInt(config.global.Global.accountId)}/records`
   },{
     name: '直方图',
     img: config.img.sanyeduijian,
@@ -54,6 +56,9 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
     key={i}
     className={styles.peer}
     onClick={() => {
+      if (item.href) {
+        window.location.href = item.href
+      } else
       history.push(item.path);
     }}
     >
