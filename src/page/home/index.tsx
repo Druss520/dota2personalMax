@@ -39,10 +39,10 @@ const blockArray: ThemeBlock[] = [
     img: config.img.jiayan,
     path: '/wardmap'
   },{
-    name: '记录榜(外链)',
+    name: '记录榜',
     img: config.img.buxiudun,
     path: '/record',
-    href: `https://www.opendota.com/players/${parseInt(config.global.Global.accountId)}/records`
+    // href: `https://www.opendota.com/players/${parseInt(config.global.Global.accountId)}/records`
   },{
     name: '直方图',
     img: config.img.sanyeduijian,

@@ -5,16 +5,95 @@ import * as classNames from 'classnames';
 import history from '../../history';
 import player from '../../interface/player';
 import StateView from '../../components/StateView';
-import ImgView from '../../components/ImgView';
+// import ImgView from '../../components/ImgView';
 import { observer } from 'mobx-react';
-import { observable, action } from 'mobx';
-// import * as Echarts from 'echarts';
-import unpackPositionData from '../../utils/unpackPositonData';
-import HeatMap from '../../components/Heatmap';
+// import { observable, action, values } from 'mobx';
+import RecordItem from '../../components/recordItem';
 
 interface State {
   call1: boolean,
   fail: number,
+}
+
+const wordList = [
+  {
+    param: 'kills',
+    name: '最高击杀'
+  },
+  {
+    param: 'deaths',
+    name: '最高死亡'
+  },
+  {
+    param: 'assists',
+    name: '最多助攻'
+  },
+  {
+    param: 'kda',
+    name: 'KDA'
+  },
+  {
+    param: 'gold_per_min',
+    name: 'GPM'
+  },
+  {
+    param: 'xp_per_min',
+    name: 'XPM'
+  },
+  {
+    param: 'last_hits',
+    name: '最高正补'
+  },
+  {
+    param: 'denies',
+    name: '最多反补'
+  },
+  {
+    param: 'lane_efficiency_pct',
+    name: '对线效率'
+  },
+  {
+    param: 'duration',
+    name: '比赛时长'
+  },
+  {
+    param: 'hero_damage',
+    name: '最高伤害'
+  },
+  {
+    param: 'tower_damage',
+    name: '建筑伤害'
+  },
+  {
+    param: 'hero_healing',
+    name: '最高治疗'
+  },
+  {
+    param: 'courier_kills',
+    name: '信使击杀'
+  },
+  {
+    param: 'purchase_ward_observer',
+    name: '假眼购买'
+  },
+  {
+    param: 'purchase_ward_sentry',
+    name: '真眼购买'
+  },
+  {
+    param: 'actions_per_min',
+    name: 'APM'
+  },
+]
+
+function getNamefromList(key: string): string {
+  let val = '';
+  wordList.forEach((item) => {
+    if(key === item.param) {
+      val = item.name
+    }
+  })
+  return val;
 }
 
 
@@ -31,18 +110,29 @@ interface State {
   }
 
   public componentDidMount(): void {
-    // player.wardPage().then((value) => {
-    //   if (value === 1) {
-    //     this.setState({
-    //       fail: 1
-    //     })
-    //   } else {
-    //     this.setState({
-    //       call1: true
-    //     })
-    //   }
-    // })
+      this.makeReq().then((val) => {
+      if (val) {
+        this.setState({
+          fail: 1
+        })
+      } else {
+        this.setState({
+          call1: true
+        })
+        console.log(111);
+      }
+    })
+  }
 
+  public async makeReq(): Promise<void> {
+    await  wordList.forEach((item) => {
+      const param = {
+        sort: item.param
+      };
+      player.getMatchRecords(param).then((value) => {
+        console.log(222);
+      })
+    })
   }
 
   public componentWillUnmount(): void {
@@ -70,9 +160,16 @@ interface State {
           
         {
           this.state.call1 ? (
-            <div>
-
-            </div>
+            player.record.map((item, i) => {
+              return (
+                <RecordItem
+                records={item.match}
+                name={getNamefromList(item.key)}
+                param={item.key}
+                key={i}
+                />
+              )
+            })
           ) : this.state.fail === 1 ? (
             <StateView state={'fail'} />
           ) : (

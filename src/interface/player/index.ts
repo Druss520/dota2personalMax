@@ -7,6 +7,7 @@ import config from '../../config';
 import getTotalData from './getTotalData';
 import getPeers from './getPeers';
 import getWard from './getward';
+import getRecord, { PlayerMatchRecordParams } from './getMatchesForRecord';
 
 interface Params {
   account_id: number;
@@ -95,6 +96,48 @@ export interface Wardmap {
     sen: {}
 }
 
+export interface MatchesRecord {
+  match_id: number,
+  player_slot: number,
+  radiant_win: boolean,
+  duration: number,
+  game_mode: number,
+  lobby_type: number,
+  hero_id: number,
+  start_time: number,
+  version: number,
+  kills: number,
+  deaths: number,
+  assists: number,
+  skill: number,
+  party_size: number,
+  hero_damage: number,
+  leaver_status: number,
+  courier_kills: number
+  actions_per_min: number,
+  denies: number,
+  lane_efficiency_pct: number,
+  gold_per_min: number,
+  kda: number;
+  xp_per_min: number,
+  last_hits: number,
+  tower_damage,
+  hero_healing,
+  neutral_kills,
+  purchase_ward_observer,
+  purchase_ward_sentry,
+}
+
+interface RecordPair {
+  match: MatchesRecord,
+  key: string;
+}
+
+interface RecordParams {
+  sort: string;
+  limit?: number;
+}
+
 
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
@@ -103,6 +146,7 @@ class Player {
   @observable public totalData: TotalData[] | undefined;
   @observable public peers: Peers[] | undefined;
   public wardmap: Wardmap | undefined;
+  public record: RecordPair[]  = [];
 
   // 192820722
   public params: Params = {
@@ -192,6 +236,26 @@ class Player {
 
     await getWard(this.params).then((res) => {
       this.wardmap = res.data;
+    }).catch(e => {
+      console.log(e);
+      errornum = 1;
+    })
+
+    return errornum;
+  }
+
+  public async getMatchRecords(partial: RecordParams): Promise<number> {
+    let errornum = 0;
+
+    const Prms: PlayerMatchRecordParams = Object.assign({}, this.params, partial);
+
+    await getRecord(Prms).then((res) => {
+      const temp: MatchesRecord[] = res.data
+      const final: RecordPair = Object.assign({}, {
+        match: temp[0],
+        key: Prms.sort
+      })
+      this.record.push(final);
     }).catch(e => {
       console.log(e);
       errornum = 1;
