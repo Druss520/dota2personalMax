@@ -4,6 +4,7 @@ import * as styles from './index.scss';
 import { MatchesRecord } from '../../interface/player';
 import ImgView from '../ImgView';
 import heroStats, { Heroes } from '../../interface/heros';
+import Duration from '../../utils/standardTime';
 
 interface Props {
   records: MatchesRecord;
@@ -35,7 +36,13 @@ const RecordItem = (props: Props) => {
         {name}
       </div>
       <div className={styles.team}>
-        {records[param]}
+        {!records[param] ? '--' : (
+          param === 'duration' ? (
+            Duration(records[param])
+          ) : (
+            records[param]
+          )
+        )}
       </div>
     </div>
   )

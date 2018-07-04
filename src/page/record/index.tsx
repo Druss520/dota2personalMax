@@ -9,10 +9,12 @@ import StateView from '../../components/StateView';
 import { observer } from 'mobx-react';
 // import { observable, action, values } from 'mobx';
 import RecordItem from '../../components/recordItem';
+import heroes from '../../interface/heros';
 
 interface State {
-  call1: boolean,
-  fail: number,
+  call1: boolean;
+  fail: number;
+  call2: boolean;
 }
 
 const wordList = [
@@ -106,33 +108,58 @@ function getNamefromList(key: string): string {
 
   public state: State = {
     call1: false,
+    call2: false,
     fail: 0,
   }
 
   public componentDidMount(): void {
-      this.makeReq().then((val) => {
-      if (val) {
-        this.setState({
-          fail: 1
-        })
-      } else {
-        this.setState({
-          call1: true
-        })
-        console.log(111);
-      }
-    })
+    this.makeReq();
+    if (heroes.heroArray) {
+      this.setState({
+        call2: true
+      })
+    } else {
+      heroes.getHeroInfo().then((value) => {
+        if(value) {
+          this.setState({
+            fail: 1
+          })
+        } else {
+          this.setState({
+            call2: true
+          })
+        }
+      })
+    }
   }
 
   public async makeReq(): Promise<void> {
-    await  wordList.forEach((item) => {
+    let promiseContainer: Promise<number>[] = [];
+    wordList.forEach((item) => {
+      // console.log(3333);
       const param = {
         sort: item.param
       };
-      player.getMatchRecords(param).then((value) => {
-        console.log(222);
-      })
+      promiseContainer.push(player.getMatchRecords(param));
+      // console.log(4444);
     })
+
+    Promise.all(promiseContainer).then((value) => {
+      // console.log(9999);
+      value.forEach((value) => {
+        if (value === 0) {
+          this.setState({
+            fail: 1
+          })
+        }
+      });
+      this.setState({
+        call1: true
+      });
+    }).catch(e => {
+      console.log(e);
+    })
+
   }
 
   public componentWillUnmount(): void {
@@ -159,7 +186,7 @@ function getNamefromList(key: string): string {
           </div>
           
         {
-          this.state.call1 ? (
+          this.state.call1 && this.state.call2 ? (
             player.record.map((item, i) => {
               return (
                 <RecordItem

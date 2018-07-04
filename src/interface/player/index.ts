@@ -245,10 +245,10 @@ class Player {
   }
 
   public async getMatchRecords(partial: RecordParams): Promise<number> {
-    let errornum = 0;
 
     const Prms: PlayerMatchRecordParams = Object.assign({}, this.params, partial);
-
+    
+    let num  = 1;
     await getRecord(Prms).then((res) => {
       const temp: MatchesRecord[] = res.data
       const final: RecordPair = Object.assign({}, {
@@ -256,12 +256,13 @@ class Player {
         key: Prms.sort
       })
       this.record.push(final);
+      // console.log(2222);
     }).catch(e => {
       console.log(e);
-      errornum = 1;
+      num = 0;
     })
-
-    return errornum;
+    // console.log(5555);
+    return num;
   }
 
 }
