@@ -30,10 +30,10 @@ const wordList = [
     param: 'assists',
     name: '最多助攻'
   },
-  // {
-  //   param: 'kda',
-  //   name: 'KDA'
-  // },
+  {
+    param: 'kda',
+    name: 'KDA'
+  },
   {
     param: 'gold_per_min',
     name: 'GPM'
@@ -50,10 +50,10 @@ const wordList = [
     param: 'denies',
     name: '最多反补'
   },
-  // {
-  //   param: 'lane_efficiency_pct',
-  //   name: '对线效率(%)'
-  // },
+  {
+    param: 'lane_efficiency_pct',
+    name: '对线效率(%)'
+  },
   {
     param: 'duration',
     name: '比赛时长'
@@ -70,22 +70,22 @@ const wordList = [
     param: 'hero_healing',
     name: '最高治疗'
   },
-  // {
-  //   param: 'courier_kills',
-  //   name: '信使击杀'
-  // },
-  // {
-  //   param: 'purchase_ward_observer',
-  //   name: '假眼购买'
-  // },
-  // {
-  //   param: 'purchase_ward_sentry',
-  //   name: '真眼购买'
-  // },
-  // {
-  //   param: 'actions_per_min',
-  //   name: 'APM'
-  // },
+  {
+    param: 'courier_kills',
+    name: '信使击杀'
+  },
+  {
+    param: 'purchase_ward_observer',
+    name: '假眼购买'
+  },
+  {
+    param: 'purchase_ward_sentry',
+    name: '真眼购买'
+  },
+  {
+    param: 'actions_per_min',
+    name: 'APM'
+  },
 ]
 
 function getNamefromList(key: string): string {
