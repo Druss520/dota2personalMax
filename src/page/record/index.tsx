@@ -52,7 +52,7 @@ const wordList = [
   },
   {
     param: 'lane_efficiency_pct',
-    name: '对线效率'
+    name: '对线效率(%)'
   },
   {
     param: 'duration',
@@ -112,8 +112,28 @@ function getNamefromList(key: string): string {
     fail: 0,
   }
 
+  public tempid: string;
+
   public componentDidMount(): void {
-    this.makeReq();
+
+    this.tempid = config.global.Global.accountId
+    const prevAccountId = player.previousAccountId;
+    if (this.tempid !== prevAccountId) {
+      this.makeReq();
+    } else {
+      if (heroes.heroArray && player.RecordData.length !== 0) {
+        this.setState({
+          call1: true,
+          call2: true
+        })
+      } else {
+        this.makeReq();
+      }
+    }
+  
+  }
+
+  public async makeReq(): Promise<void> {
     if (heroes.heroArray) {
       this.setState({
         call2: true
@@ -131,9 +151,7 @@ function getNamefromList(key: string): string {
         }
       })
     }
-  }
 
-  public async makeReq(): Promise<void> {
     let promiseContainer: Promise<number>[] = [];
     wordList.forEach((item) => {
       // console.log(3333);
@@ -153,6 +171,7 @@ function getNamefromList(key: string): string {
           })
         }
       });
+      player.RecordData = player.recordTemp;
       this.setState({
         call1: true
       });
@@ -166,6 +185,7 @@ function getNamefromList(key: string): string {
     this.setState = () => {
       return;
     }
+    player.recordTemp = [];
   }
 
 
@@ -182,12 +202,18 @@ function getNamefromList(key: string): string {
             }}
             >
             </div>
-            敬请期待
+            最高数据
           </div>
-          
+          <div className={styles.title}>
+            <div className={styles.tt1}>英雄</div>
+            <div className={styles.tt2}>最高纪录</div>
+            <div className={styles.tt3}>分数</div>
+            <div className={styles.tt4}>时间</div>
+            <div className={styles.tt5}>结果</div>
+          </div>
         {
           this.state.call1 && this.state.call2 ? (
-            player.record.map((item, i) => {
+            player.RecordData.map((item, i) => {
               return (
                 <RecordItem
                 records={item.match}

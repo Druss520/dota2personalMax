@@ -28,3 +28,41 @@
   font-size: rem(26);
   color: #fff;
 }
+
+.title {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: rem(60);
+  background-color: #efeff5;
+  width: 100%;
+  font-size: rem(20);
+  color: #333;
+
+  .tt1 {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+  }
+
+  .tt2 {
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+  }
+  .tt3 {
+    display: flex;
+    justify-content: center;
+    width: 15%;
+  }
+  .tt4 {
+    display: flex;
+    justify-content: center;
+    width: 12%;
+  }
+  .tt5 {
+    display: flex;
+    justify-content: center;
+    width: 12%;
+  }
+}

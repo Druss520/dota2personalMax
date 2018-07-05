@@ -146,7 +146,8 @@ class Player {
   @observable public totalData: TotalData[] | undefined;
   @observable public peers: Peers[] | undefined;
   public wardmap: Wardmap | undefined;
-  public record: RecordPair[]  = [];
+  public recordTemp: RecordPair[]  = [];
+  public RecordData: RecordPair[]  = [];
 
   // 192820722
   public params: Params = {
@@ -255,7 +256,7 @@ class Player {
         match: temp[0],
         key: Prms.sort
       })
-      this.record.push(final);
+      this.recordTemp.push(final);
       // console.log(2222);
     }).catch(e => {
       console.log(e);

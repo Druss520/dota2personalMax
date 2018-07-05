@@ -7,7 +7,11 @@ export default function(time: number): string {
     return (Math.floor(difference/3600) + '小时前')
   } else if (difference <= 604800) {
     return (Math.floor(difference/86400) + '天前')
-  } else {
+  } else if (difference <= 2592000) {
     return (Math.floor(difference/604800) + '周前')
+  } else if (difference <= 31104000) {
+    return (Math.floor(difference/2592000) + '月前')
+  } else {
+    return (Math.floor(difference/31104000) + '年前')
   }
 }

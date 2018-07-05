@@ -48,29 +48,46 @@ interface State {
   public idList: string[] = [];
   public pickList: Peers[] = []; 
   public kaihei: Peers[] = [];
+  public tempid: string;
 
   public componentDidMount(): void {
-      player.PeerPage().then((value) => {
-        if (value === 1) {
-          this.setState({
-            fail: 1
-          })
-        } else if (value === 2) {
-          this.setState({
-            fail: 2
-          })
-        } else {
-          this.setState({
-            call1: true
-          })
-        }
-      })
+    this.tempid = config.global.Global.accountId
+    const prevAccountId = player.previousAccountId;
+    if (this.tempid !== prevAccountId) {
+      this.peerReq();
+    } else {
+      if (player.peers) {
+        this.setState({
+          call1: true
+        })
+      } else {
+        this.peerReq();
+      }
+    }
   }
 
   public componentWillUnmount(): void {
     this.setState = () => {
       return;
     }
+  }
+
+  public peerReq(): void {
+    player.PeerPage().then((value) => {
+      if (value === 1) {
+        this.setState({
+          fail: 1
+        })
+      } else if (value === 2) {
+        this.setState({
+          fail: 2
+        })
+      } else {
+        this.setState({
+          call1: true
+        })
+      }
+    })
   }
 
   @action public getPeerObj(id: string): Peers {

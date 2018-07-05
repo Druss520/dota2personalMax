@@ -43,11 +43,12 @@ const blockArray: ThemeBlock[] = [
     img: config.img.buxiudun,
     path: '/record',
     // href: `https://www.opendota.com/players/${parseInt(config.global.Global.accountId)}/records`
-  },{
-    name: '直方图',
-    img: config.img.sanyeduijian,
-    path: '/histogram'
-  }
+  },
+  // {
+  //   name: '直方图',
+  //   img: config.img.sanyeduijian,
+  //   path: '/histogram'
+  // }
 ]
 
 const ThemeBlock = (item: ThemeBlock, i: number) => {
