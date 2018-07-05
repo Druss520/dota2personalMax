@@ -6,6 +6,7 @@ import ImgView from '../ImgView';
 import heroStats, { Heroes } from '../../interface/heros';
 import Duration from '../../utils/standardTime';
 import TimeDif from '../../utils/timeDifference';
+import history from '../../history';
 
 interface Props {
   records: MatchesRecord;
@@ -27,6 +28,10 @@ const RecordItem = (props: Props) => {
 
   return (
     <div className={styles.block}
+    onClick={() => {
+      config.global.Global.matchId = records.match_id.toString();
+      history.push('/matchDetail');
+    }}
     >
       <ImgView
       className={styles.heroIcon}

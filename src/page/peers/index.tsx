@@ -52,7 +52,7 @@ interface State {
 
   public componentDidMount(): void {
     this.tempid = config.global.Global.accountId
-    const prevAccountId = player.previousAccountId;
+    const prevAccountId = player.previousPeer;
     if (this.tempid !== prevAccountId) {
       this.peerReq();
     } else {
@@ -83,6 +83,7 @@ interface State {
           fail: 2
         })
       } else {
+        player.previousPeer = this.tempid;
         this.setState({
           call1: true
         })

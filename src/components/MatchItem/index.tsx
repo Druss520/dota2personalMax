@@ -7,6 +7,7 @@ import TimeDif from '../../utils/timeDifference';
 import Duration from '../../utils/standardTime';
 import KDA from '../../utils/getKDA';
 import ImgView from '../ImgView';
+import history from '../../history';
 
 
 const lobby_type = require('../../assets/json/lobby_type.json');
@@ -30,7 +31,12 @@ const MatchItem = (props: Props) => {
   // console.log(match.game_mode,gameMode);
 
   return (
-    <div className={styles.block}>
+    <div className={styles.block}
+    onClick={() => {
+      config.global.Global.matchId = match.match_id.toString();
+      history.push('/matchDetail');
+    }}
+    >
       <div className={styles.left}>
         {/* <img
           className={styles.heroIcon}

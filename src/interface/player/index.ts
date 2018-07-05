@@ -155,6 +155,9 @@ class Player {
   }
 
   public previousAccountId: string | undefined;
+  public previousPeer: string | undefined;
+  public previousRecord: string | undefined;
+
   public isFakeId: boolean = false;
 
   @action public async getAllInfo(): Promise<number> {

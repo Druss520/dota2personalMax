@@ -4,6 +4,7 @@ import * as styles from './index.scss';
 import { ProPlayers } from '../../interface/proplayer';
 import ImgView from '../ImgView';
 import history from '../../history';
+import player from '../../interface/player';
 
 
 interface Props {
