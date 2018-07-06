@@ -94,7 +94,7 @@ interface State {
         {
           this.state.call1 && this.state.call2 ? (
             <div>
-              fdfdf
+              数据我已经请求到了，奈何没空写UI，等着吧
             </div>
           ) : this.state.fail === 1 ? (
             <StateView state={'fail'} />

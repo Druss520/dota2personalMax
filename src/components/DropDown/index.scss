@@ -1,7 +1,7 @@
 .block {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: #fff;
   width: rem(200);
   padding: rem(10) rem(10);
@@ -10,7 +10,13 @@
   font-size: rem(22);
   color: #666;
 
+  .text {
+    width: 80%;
+    display: inline-block;
+  }
+
   .icon {
+    margin-left: rem(20);
     display: block;
     color: deepskyblue
   }

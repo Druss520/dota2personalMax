@@ -42,6 +42,7 @@ class DropDown extends React.Component <Props> {
     this.setState({
       word: key.name
     })
+    // console.log(key.param,33333);
     this.props.onPick(key.param);
   }
   
@@ -65,7 +66,7 @@ class DropDown extends React.Component <Props> {
           this.click();
         }}
         >
-        {this.state.word}
+        <div className={styles.text}>{this.state.word}</div>
         <div className={classNames([
           'fa fa-caret-down',
           styles.icon

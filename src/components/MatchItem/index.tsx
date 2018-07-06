@@ -34,6 +34,7 @@ const MatchItem = (props: Props) => {
     <div className={styles.block}
     onClick={() => {
       config.global.Global.matchId = match.match_id.toString();
+      // console.log(match.match_id);
       history.push('/matchDetail');
     }}
     >

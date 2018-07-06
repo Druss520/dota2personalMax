@@ -161,6 +161,8 @@ function getNamefromList(key: string): string {
       limit: 10
     }
 
+    // console.log(params.sort, 555555);
+
     player.getMatchRecordList(params).then(res => {
       if (res) {
         this.setState({
@@ -183,11 +185,14 @@ function getNamefromList(key: string): string {
   }
 
   public changeKeyWord(key: string): void {
+    // console.log(key, 44444);
     this.setState({
       keyWord: key,
       call1: false
     });
-    this.makeReq();
+    setTimeout(() => {
+      this.makeReq();
+    }, 500);
   }
 
 
@@ -204,7 +209,7 @@ function getNamefromList(key: string): string {
             }}
             >
             </div>
-            最高数据
+            记录排行
           </div>
           <div className={styles.selectRow}>
             <div className={styles.word}>
