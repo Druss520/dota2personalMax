@@ -1,0 +1,61 @@
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  width: rem(200);
+  padding: rem(10) rem(10);
+  border-radius: rem(15);
+  border: rem(1) solid deepskyblue;
+  font-size: rem(22);
+  color: #666;
+
+  .icon {
+    display: block;
+    color: deepskyblue
+  }
+}
+
+.visible {
+  position: absolute;
+  visibility: visible;
+  display: flex;
+  width: rem(200);
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: rem(10) rem(10);
+  border-radius: rem(15);
+  border: rem(1) solid deepskyblue;
+  z-index: 10;
+  background-color: #fff;
+  margin-left: rem(-10);
+  transform: translateY(53.5%);
+  opacity: 1;
+  transition: all 0.2s linear;
+}
+
+.unit {
+  width: 100%;
+  display: flex;
+  font-size: rem(18);
+  padding: rem(8) 0;
+  border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
+}
+
+.hide {
+  display: contents;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.page-dialog-mask{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+

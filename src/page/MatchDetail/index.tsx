@@ -3,12 +3,11 @@ import * as React from 'react';
 import * as styles from './index.scss';
 import * as classNames from 'classnames';
 import history from '../../history';
-import player from '../../interface/player';
+import matchDetail from '../../interface/matchDetail';
 import StateView from '../../components/StateView';
 // import ImgView from '../../components/ImgView';
 import { observer } from 'mobx-react';
 // import { observable, action, values } from 'mobx';
-import RecordItem from '../../components/recordItem';
 import heroes from '../../interface/heros';
 
 interface State {
@@ -34,7 +33,7 @@ interface State {
   public tempid: string;
 
   public componentDidMount(): void {
-  
+    this.makeReq();
   }
 
   public async makeReq(): Promise<void> {
@@ -56,6 +55,17 @@ interface State {
       })
     }
 
+    matchDetail.detailMatchPage().then(res => {
+      if (res) {
+        this.setState({
+          fail: 1
+        })
+      } else {
+        this.setState({
+          call1: true
+        })
+      }
+    })
     
   }
 
@@ -79,12 +89,12 @@ interface State {
             }}
             >
             </div>
-            还未开工，敬请期待
+            比赛详情
           </div>
         {
           this.state.call1 && this.state.call2 ? (
             <div>
-
+              fdfdf
             </div>
           ) : this.state.fail === 1 ? (
             <StateView state={'fail'} />

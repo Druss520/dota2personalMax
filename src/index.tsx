@@ -15,6 +15,7 @@ import Wardmap from './page/wardmap';
 import Record from './page/record';
 import Histogram from './page/histogram';
 import MatchDetail from './page/MatchDetail';
+import RecordNoList from './page/recordNoList';
 
 ReactDOM.render(
   <React.Fragment>
@@ -26,7 +27,7 @@ ReactDOM.render(
       <Route exact path="/search" component={Search} />
       <Route exact path="/peer" component={Peer} />
       <Route exact path="/wardmap" component={Wardmap} />
-      <Route exact path="/record" component={Record} />
+      <Route exact path="/record" component={RecordNoList} />
       <Route exact path="/histogram" component={Histogram} />
       <Route exact path="/matchDetail" component={MatchDetail} />
       </div>

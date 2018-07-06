@@ -148,6 +148,7 @@ class Player {
   public wardmap: Wardmap | undefined;
   public recordTemp: RecordPair[]  = [];
   public RecordData: RecordPair[]  = [];
+  @observable public recordList: MatchesRecord[] | undefined;
 
   // 192820722
   public params: Params = {
@@ -260,6 +261,23 @@ class Player {
         key: Prms.sort
       })
       this.recordTemp.push(final);
+      // console.log(2222);
+    }).catch(e => {
+      console.log(e);
+      num = 0;
+    })
+    // console.log(5555);
+    return num;
+  }
+
+  public async getMatchRecordList(partial: RecordParams): Promise<number> {
+
+    const Prms: PlayerMatchRecordParams = Object.assign({}, this.params, partial);
+    
+    let num  = 1;
+    await getRecord(Prms).then((res) => {
+      const temp: MatchesRecord[] = res.data
+      this.recordList = temp;
       // console.log(2222);
     }).catch(e => {
       console.log(e);
