@@ -29,40 +29,67 @@
   color: #fff;
 }
 
-.title {
+.dash-board {
   display: flex;
-  justify-content: flex-start;
+  background-color: #333;
+  color: #fff;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  height: rem(60);
-  background-color: #efeff5;
-  width: 100%;
-  font-size: rem(20);
-  color: #333;
+  justify-content: space-between;
+  padding: rem(20);
 
-  .tt1 {
+  .dash-item {
+    width: 50%;
+    font-size: rem(24);
     display: flex;
-    justify-content: center;
-    width: 30%;
-  }
-
-  .tt2 {
-    display: flex;
+    align-items: center;
     justify-content: flex-start;
-    width: 30%;
+    margin-bottom: rem(15);
+
+    .name {
+      color: #999
+    }
+
+    .value {
+      margin-left: rem(12);
+      color: #fff;
+    }
   }
-  .tt3 {
+}
+
+.league-block {
+  margin-top: rem(20);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .radiant {
     display: flex;
-    justify-content: center;
-    width: 15%;
+    padding: rem(10);
+    justify-content: flex-start;
+    align-items: center;
+    background: -webkit-linear-gradient(135deg,#fff, rgb(45, 167, 45));
+    // background-color: rgb(45, 167, 45)
   }
-  .tt4 {
+
+  .dire {
     display: flex;
-    justify-content: center;
-    width: 12%;
+    padding: rem(10);
+    justify-content: flex-start;
+    align-items: center;
+    background: -webkit-linear-gradient(135deg,#fff, rgb(168, 50, 50));
+    // background-color: rgb(168, 50, 50) 
   }
-  .tt5 {
-    display: flex;
-    justify-content: center;
-    width: 12%;
-  }
+}
+
+.league-block-title {
+  font-size: rem(22);
+  color: #fff;
+  margin-right: rem(30);
+}
+
+.league-block-result {
+  font-size: rem(34);
+  color: #fff;
 }

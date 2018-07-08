@@ -253,6 +253,10 @@ class Match {
   public async detailMatchPage(): Promise<number> {
     let errornum = 0;
 
+    this.params = {
+      match_id: parseInt(config.global.Global.matchId)
+    }
+
     await getMatchDetail(this.params).then((res) => {
       this.matchDetail = res.data;
     }).catch(e => {

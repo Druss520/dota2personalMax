@@ -1,4 +1,5 @@
 export const block: string;
+export const innerBox: string;
 export const text: string;
 export const icon: string;
 export const visible: string;

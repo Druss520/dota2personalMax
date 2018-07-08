@@ -9,6 +9,13 @@ import StateView from '../../components/StateView';
 import { observer } from 'mobx-react';
 // import { observable, action, values } from 'mobx';
 import heroes from '../../interface/heros';
+import standardTime from '../../utils/standardTime';
+import timeDifference from '../../utils/timeDifference';
+
+const lobby_type = require('../../assets/json/lobby_type.json');
+const gameMode = require('../../assets/json/game_mode.json');
+const server = require('../../assets/json/region.json');
+
 
 interface State {
   call1: boolean;
@@ -34,6 +41,7 @@ interface State {
 
   public componentDidMount(): void {
     this.makeReq();
+    window.scrollTo(0,0);
   }
 
   public async makeReq(): Promise<void> {
@@ -77,6 +85,16 @@ interface State {
 
 
   public render(): JSX.Element {
+
+    const DashItem = (name:string, value: string | number) => {
+      return (
+        <div className={styles.dashItem}>
+          <div className={styles.name}>{name}:</div>
+          <div className={styles.value}>{value ? value : '--'}</div>
+        </div>
+      )
+    }
+
       return(
         <div className={styles.page}>
           <div className={styles.header}>
@@ -94,7 +112,42 @@ interface State {
         {
           this.state.call1 && this.state.call2 ? (
             <div>
-              数据我已经请求到了，奈何没空写UI，等着吧
+              <div className={styles.dashBoard}>
+                {DashItem('比赛ID',matchDetail.matchDetail.match_id)}
+                {DashItem('比赛时长',standardTime(matchDetail.matchDetail.duration))}
+                {DashItem('开始时间',timeDifference(matchDetail.matchDetail.start_time))}
+                {DashItem('比赛模式',(
+                  matchDetail.matchDetail.lobby_type === 0 ? (
+                    gameMode[matchDetail.matchDetail.game_mode] ? (
+                      gameMode[matchDetail.matchDetail.game_mode].chinese
+                    ) : null
+                  ) : (
+                    matchDetail.matchDetail.lobby_type  === 4 ? (
+                      gameMode[matchDetail.matchDetail.game_mode] ? (
+                        gameMode[matchDetail.matchDetail.game_mode].chinese
+                      ) : null
+                    ) : (
+                      lobby_type[matchDetail.matchDetail.lobby_type] ? (
+                        lobby_type[matchDetail.matchDetail.lobby_type].chinese
+                      ) : null
+                    )
+                  )
+                ))}
+                {DashItem('服务器',server[matchDetail.matchDetail.region])}
+                {DashItem('一血时间',standardTime(matchDetail.matchDetail.first_blood_time))}
+              </div>
+              <div className={styles.leagueBlock}>
+                <div className={styles.radiant}>
+                  <div className={styles.leagueBlockTitle}>天辉</div>
+                  <div className={styles.leagueBlockResult}>{matchDetail.matchDetail.radiant_win ? '胜利':'失败'}</div>
+                </div>
+              </div>
+              <div className={styles.leagueBlock}>
+                <div className={styles.dire}>
+                  <div className={styles.leagueBlockTitle}>夜魇</div>
+                  <div className={styles.leagueBlockResult}>{matchDetail.matchDetail.radiant_win ? '失败':'胜利'}</div>
+                </div>
+              </div>
             </div>
           ) : this.state.fail === 1 ? (
             <StateView state={'fail'} />

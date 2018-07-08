@@ -53,19 +53,21 @@ const RecordItem = (props: Props) => {
       <div className={styles.history}>
         {TimeDif(records.start_time)}
       </div>
+      <div className={styles.result}>
       {
-          (records.radiant_win && records.player_slot >= 0 && records.player_slot < 128) || (
-            !records.radiant_win && records.player_slot >= 128
-          ) ? (
-            <div className={styles.win}>
-              W
-            </div>
-          ) : (
-            <div className={styles.lose}>
-              L
-            </div>
-          )
-        }
+        (records.radiant_win && records.player_slot >= 0 && records.player_slot < 128) || (
+          !records.radiant_win && records.player_slot >= 128
+        ) ? (
+          <div className={styles.win}>
+            W
+          </div>
+        ) : (
+          <div className={styles.lose}>
+            L
+          </div>
+        )
+      }
+      </div>
     </div>
   )
 }

@@ -16,7 +16,7 @@ interface State {
   call1: boolean;
   fail: number;
   call2: boolean;
-  keyWord: string;
+  // keyWord: string;
 }
 
 export const wordList = [
@@ -113,12 +113,14 @@ function getNamefromList(key: string): string {
     call1: false,
     call2: false,
     fail: 0,
-    keyWord: 'kills',
+    // keyWord: 'kills',
   }
 
   public tempid: string;
+  public keyWord: string = 'kills';
 
   public componentDidMount(): void {
+    window.scrollTo(0,0);
 
     this.tempid = config.global.Global.accountId
     const prevAccountId = player.previousRecord;
@@ -157,7 +159,7 @@ function getNamefromList(key: string): string {
     }
 
     const params = {
-      sort: this.state.keyWord,
+      sort: this.keyWord,
       limit: 10
     }
 
@@ -187,12 +189,10 @@ function getNamefromList(key: string): string {
   public changeKeyWord(key: string): void {
     // console.log(key, 44444);
     this.setState({
-      keyWord: key,
       call1: false
     });
-    setTimeout(() => {
-      this.makeReq();
-    }, 500);
+    this.keyWord = key;
+    this.makeReq();
   }
 
 
@@ -231,8 +231,8 @@ function getNamefromList(key: string): string {
               return (
                 <RecordListItem
                 records={item}
-                name={getNamefromList(this.state.keyWord)}
-                param={this.state.keyWord}
+                name={getNamefromList(this.keyWord)}
+                param={this.keyWord}
                 key={i}
                 />
               )

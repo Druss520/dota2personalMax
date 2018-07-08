@@ -1,7 +1,4 @@
 .block {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   background-color: #fff;
   width: rem(200);
   padding: rem(10) rem(10);
@@ -9,6 +6,14 @@
   border: rem(1) solid deepskyblue;
   font-size: rem(22);
   color: #666;
+
+  .inner-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
 
   .text {
     width: 80%;
@@ -25,18 +30,22 @@
 .visible {
   position: absolute;
   visibility: visible;
-  display: flex;
+  // display: flex;
   width: rem(200);
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
+  height: rem(400);
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  // flex-direction: column;
+  // align-items: flex-start;
+  // justify-content: space-between;
   padding: rem(10) rem(10);
   border-radius: rem(15);
   border: rem(1) solid deepskyblue;
   z-index: 10;
   background-color: #fff;
   margin-left: rem(-10);
-  transform: translateY(53.5%);
+  margin-top: rem(10);
+  // transform: translateY(53.5%);
   opacity: 1;
   transition: all 0.2s linear;
 }
@@ -44,8 +53,8 @@
 .unit {
   width: 100%;
   display: flex;
-  font-size: rem(18);
-  padding: rem(8) 0;
+  font-size: rem(22);
+  padding: rem(10) 0;
   border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
 }
 

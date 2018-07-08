@@ -32,7 +32,9 @@ class DropDown extends React.Component <Props> {
     word: wordList[0].name
   }
 
-  public click(): void {
+  public click(e: React.MouseEvent<HTMLDivElement>): void {
+    e.preventDefault();
+    e.stopPropagation();
     this.setState({
       toggle: !this.state.toggle
     })
@@ -59,18 +61,20 @@ class DropDown extends React.Component <Props> {
             })
           }}
           />
-        ) : null
+        ) : <div></div>
       }
         <div className={styles.block}
-        onClick={() => {
-          this.click();
+        onClick={(e) => {
+          this.click(e);
         }}
         >
-        <div className={styles.text}>{this.state.word}</div>
-        <div className={classNames([
-          'fa fa-caret-down',
-          styles.icon
-        ])}>
+        <div className={styles.innerBox}>
+          <div className={styles.text}>{this.state.word}</div>
+          <div className={classNames([
+            'fa fa-caret-down',
+            styles.icon
+          ])}>
+          </div>
         </div>
         {
           this.state.toggle ? (
