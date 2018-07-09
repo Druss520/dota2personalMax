@@ -34,7 +34,7 @@ class PlayerDetail extends React.Component <Props> {
   }
 
   public state: State = {
-    toggle: false,
+    toggle: true,
   }
 
   public hero: Heroes = undefined;
@@ -48,7 +48,9 @@ class PlayerDetail extends React.Component <Props> {
     }
   }
 
-  public click(): void {
+  public click(e: React.MouseEvent<HTMLDivElement>): void {
+    e.preventDefault();
+    e.stopPropagation();
     if (this.props.item.player_slot === this.props.onSelect) {
       this.setState({
         toggle: !this.state.toggle
@@ -68,7 +70,7 @@ class PlayerDetail extends React.Component <Props> {
     return (
       <div>
         <div className={styles.block}
-        onClick={() => this.click()}
+        onClick={(e) => this.click(e)}
         >
           <div className={styles.upBlock}>
             <ImgView

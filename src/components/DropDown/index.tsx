@@ -76,24 +76,26 @@ class DropDown extends React.Component <Props> {
           ])}>
           </div>
         </div>
+
+        <div className={classNames({
+          [styles.hide]: !this.state.toggle,
+          [styles.visible]: this.state.toggle,
+        })}>
         {
           this.state.toggle ? (
-            <div className={styles.visible}>
-              {
-                wordList.map((item, i) => {
-                  return (
-                    <div className={styles.unit}
-                    key={i}
-                    onClick={() => this.pick(item)}
-                    >
-                    {item.name}
-                    </div>
-                  )
-                })
-              }
-            </div>
-          ) : <div className={styles.hide}></div>
+            wordList.map((item, i) => {
+              return (
+                <div className={styles.unit}
+                key={i}
+                onClick={() => this.pick(item)}
+                >
+                {item.name}
+                </div>
+              )
+            })
+            ) : null
         }
+        </div>
         </div>
       </div>
     )

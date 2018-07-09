@@ -8,6 +8,7 @@
   font-size: rem(20);
   color: #333;
   border-bottom: solid rem(1) rgba($color: #ccc, $alpha: 0.7);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 .up-block {
@@ -106,7 +107,10 @@
   justify-content: flex-start;
   height: rem(150);
   flex-direction: row;
-  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
 }
 
 .extension-hide {
@@ -114,7 +118,10 @@
   height: rem(1);
   border: none;
   visibility: hidden;
-  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
 }
 
 .ext-title-row {
