@@ -100,6 +100,18 @@
   }
 }
 
+.extension-hide {
+  display: flex;
+  height: 0;
+  width: 100%;
+  border: none;
+  visibility: hidden;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+}
+
 .extension-block {
   visibility: visible;
   width: 100%;
@@ -107,17 +119,6 @@
   justify-content: flex-start;
   height: rem(150);
   flex-direction: row;
-  -moz-transition: all 0.2s linear;
-  -webkit-transition: all 0.2s linear;
-  -o-transition: all 0.2s linear;
-  -ms-transition: all 0.2s linear;
-}
-
-.extension-hide {
-  display: block;
-  height: rem(1);
-  border: none;
-  visibility: hidden;
   -moz-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;

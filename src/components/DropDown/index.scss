@@ -28,6 +28,14 @@
   }
 }
 
+.hide {
+  height: 0;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: all 0.2s linear;
+}
+
 .visible {
   position: absolute;
   visibility: visible;
@@ -48,9 +56,9 @@
   margin-top: rem(10);
   // transform: translateY(53.5%);
   opacity: 1;
-  -webkit-transition: all 0.2s linear;
   // -webkit-perspective: 1000;
   // -webkit-backface-visibility: hidden;
+  -webkit-transition: all 0.2s linear;
 }
 
 .unit {
@@ -59,13 +67,6 @@
   font-size: rem(22);
   padding: rem(10) 0;
   border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);
-}
-
-.hide {
-  height: 0;
-  display: contents;
-  visibility: hidden;
-  opacity: 0;
 }
 
 .page-dialog-mask{

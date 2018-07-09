@@ -49,6 +49,7 @@ class PlayerDetail extends React.Component <Props> {
   }
 
   public click(e: React.MouseEvent<HTMLDivElement>): void {
+    // console.log(this.state.toggle);
     e.preventDefault();
     e.stopPropagation();
     if (this.props.item.player_slot === this.props.onSelect) {
@@ -117,39 +118,40 @@ class PlayerDetail extends React.Component <Props> {
               }
             </div>
           </div>
-          {
-            item.player_slot === onSelect && this.state.toggle ? (
-              <div className={styles.extensionBlock}>
-                <div className={styles.extTitleRow}>
-                  <div className={styles.extInfo}>ID: {item.account_id ? item.account_id : '--'}</div>
-                  <div className={styles.rightItemImg}>
-                  {
-                    [item.backpack_0, item.backpack_1, item.backpack_2
-                    ].map((id, i) => {
-                      if (id === 0) {
-                        return (
-                          <ImgView
-                          className={styles.item}
-                          src={''}
-                          key={item.account_id + i}
-                          />
-                        )
-                        } else return (
-                          <ImgView
-                          className={styles.itemBackpack}
-                          src={itemDict[itemIds[id]].img}
-                          host={config.global.domain}
-                          key={item.account_id + i}
-                          />
-                        )
-                    })
-                  }
-                  </div>
-                </div>
-                这块功能没有做完，好几把难做艹
+
+          <div className={classNames({
+            [styles.extensionHide]: true,
+            [styles.extensionBlock]: item.player_slot === onSelect && this.state.toggle
+          })}>
+            <div className={styles.extTitleRow}>
+              <div className={styles.extInfo}>ID: {item.account_id ? item.account_id : '--'}</div>
+              <div className={styles.rightItemImg}>
+              {
+                [item.backpack_0, item.backpack_1, item.backpack_2
+                ].map((id, i) => {
+                  if (id === 0) {
+                    return (
+                      <ImgView
+                      className={styles.item}
+                      src={''}
+                      key={item.account_id + i}
+                      />
+                    )
+                    } else return (
+                      <ImgView
+                      className={styles.itemBackpack}
+                      src={itemDict[itemIds[id]].img}
+                      host={config.global.domain}
+                      key={item.account_id + i}
+                      />
+                    )
+                })
+              }
               </div>
-            ) : <div className={styles.extensionHide}></div>
-          }
+            </div>
+            这块功能没有做完，好几把难做艹
+          </div>
+          
         </div>
       </div>
     )

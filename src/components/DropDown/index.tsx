@@ -78,7 +78,7 @@ class DropDown extends React.Component <Props> {
         </div>
 
         <div className={classNames({
-          [styles.hide]: !this.state.toggle,
+          [styles.hide]: true,
           [styles.visible]: this.state.toggle,
         })}>
         {
