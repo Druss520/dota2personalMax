@@ -93,3 +93,55 @@
   font-size: rem(34);
   color: #fff;
 }
+
+.score {
+  padding: rem(20) rem(20);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.score-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .coma {
+    font-size: rem(40);
+    color: #333;
+  }
+
+  .rd {
+    background-color: rgb(45, 167, 45);
+  }
+
+  .dr {
+    background-color: rgb(168, 50, 50);
+  }
+}
+
+.score-border-item {
+  width: rem(40);
+  height: rem(60);
+  font-size: rem(38);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  margin: 0 rem(2);
+}
+
+.group-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: rem(22);
+  color: #666;
+
+  .top {
+    margin-bottom: rem(5);
+  }
+}

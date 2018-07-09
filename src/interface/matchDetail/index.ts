@@ -56,8 +56,17 @@ export interface MatchDetail {
     dire_team: {},
     league: {},
     skill: number,
-    players: [
-      {
+    players: PlayerData[],
+    patch: number,
+    region: number,
+    all_word_counts: {},
+    my_word_counts: {},
+    throw: number,
+    loss: number,
+    replay_url: string
+}
+
+export interface PlayerData {
         match_id: number,
         player_slot: number,
         ability_upgrades_arr: [
@@ -70,7 +79,7 @@ export interface MatchDetail {
         actions: {},
         additional_units: {},
         assists: number,
-        backpack_number: number,
+        backpack_0: number,
         backpack_1: number,
         backpack_2: number,
         buyback_log: [
@@ -103,6 +112,7 @@ export interface MatchDetail {
         hero_hits: {},
         hero_id: number,
         item_number: number,
+        item_0: number,
         item_1: number,
         item_2: number,
         item_3: number,
@@ -227,15 +237,6 @@ export interface MatchDetail {
           number
         ],
         benchmarks: {}
-      }
-    ],
-    patch: number,
-    region: number,
-    all_word_counts: {},
-    my_word_counts: {},
-    throw: number,
-    loss: number,
-    replay_url: string
 }
 
 interface MatchParams {

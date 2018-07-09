@@ -1,0 +1,149 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: rem(10) rem(10);
+  font-size: rem(20);
+  color: #333;
+  border-bottom: solid rem(1) rgba($color: #ccc, $alpha: 0.7);
+}
+
+.up-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-icon {
+  height: rem(72);
+  width: rem(128);
+  background-size: 100% 100%;
+  margin-right: rem(10);
+}
+
+.left-info {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-right: rem(10);
+
+  .name-rd {
+    display: block;
+    width: 100%;
+    font-size: rem(22);
+    color: rgb(30, 138, 30);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .name-dr {
+    display: block;
+    width: 100%;
+    font-size: rem(22);
+    color: rgb(136, 43, 43);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .row-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .row-bottom-info-left {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .row-bottom-info-right {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .info-data {
+      font-size: rem(16);
+      color: #666;
+    }
+  }
+}
+
+.item-block {
+  width: 33%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .item {
+    display: block;
+    width: rem(63.75);
+    height: rem(46.5);
+    background-size: 100% 100%;
+    margin: rem(2);
+  }
+}
+
+.extension-block {
+  visibility: visible;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  height: rem(150);
+  flex-direction: row;
+  transition: all 0.2s linear;
+}
+
+.extension-hide {
+  display: block;
+  height: rem(1);
+  border: none;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+
+.ext-title-row {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+
+  .ext-info {
+    font-size: rem(16);
+    color: #666;
+  }
+
+  .right-item-img {
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+    .item-backpack {
+      display: block;
+      width: rem(63.75);
+      height: rem(46.5);
+      background-size: 100% 100%;
+      margin: rem(2);
+      opacity: 0.5;
+    }
+  }
+}
