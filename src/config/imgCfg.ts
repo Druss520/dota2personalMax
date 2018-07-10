@@ -50,6 +50,7 @@ const buxiudun = require('../assets/img/item/Aegis_of_the_Immortal_icon.png');
 const jiayan = require('../assets/img/item/Observer_Ward_icon.png');
 const sanyeduijian = require('../assets/img/item/Sange_and_Yasha_icon.png');
 const zhenyan = require('../assets/img/item/Sentry_Ward_icon.png');
+const abilityTree = require('../assets/img/talenttree.jpg');
 
 export default {
   loading,
@@ -104,4 +105,5 @@ export default {
   jiayan,
   sanyeduijian,
   zhenyan,
+  abilityTree,
 }

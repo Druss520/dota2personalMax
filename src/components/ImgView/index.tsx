@@ -60,7 +60,7 @@ class ImgView extends React.Component<Props, State> {
 
   /** 图片的onerror事件 */
   private onImgError(): void {
-    console.log('1111');
+    // console.log('1111');
     if (!this.isUnmount) {
       this.setState({ state: 'fail' });
     }
@@ -100,7 +100,7 @@ class ImgView extends React.Component<Props, State> {
           backgroundImage: `url(${this.getSrc(this.props,this.props.src)})`
         }}
         ref={this.elemRef}
-        ></div>
+        >{this.props.children}</div>
       ) : (
         this.state.state === 'loading' ? (
           <div
@@ -122,7 +122,7 @@ class ImgView extends React.Component<Props, State> {
               backgroundImage: `url(${this.getSrc(this.props,this.props.fail)})`
             } : null
           }
-          ></div>
+          >{this.props.children}</div>
         )
       )
     )

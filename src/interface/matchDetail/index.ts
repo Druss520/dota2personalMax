@@ -11,7 +11,8 @@ export interface MatchDetail {
         unit: string,
         key: string,
         slot: number,
-        player_slot: number
+        player_slot: number,
+        type: string,
       }
     ],
     cluster: number,
@@ -40,10 +41,10 @@ export interface MatchDetail {
     objectives: {},
     picks_bans: {},
     positive_votes: number,
-    radiant_gold_adv: {},
+    radiant_gold_adv: number[],
     radiant_score: number,
     radiant_win: boolean,
-    radiant_xp_adv: {},
+    radiant_xp_adv: number[],
     start_time: number,
     teamfights: {},
     tower_status_dire: number,

@@ -165,6 +165,7 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
   }
 
   public render(): JSX.Element {
+      const itemDict = require('../../assets/json/items.json');
       return(
         this.state.call1 && this.state.call2 ? (
           <div className={styles.hehe}>

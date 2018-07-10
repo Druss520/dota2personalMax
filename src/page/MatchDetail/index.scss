@@ -37,7 +37,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: rem(20);
+  padding: rem(20) rem(15);
 
   .dash-item {
     width: 50%;
@@ -45,7 +45,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-bottom: rem(15);
+    margin-bottom: rem(10);
 
     .name {
       color: #999
@@ -144,4 +144,80 @@
   .top {
     margin-bottom: rem(5);
   }
+}
+
+.chat-title {
+  display: flex;
+  padding: rem(10);
+  justify-content: flex-start;
+  align-items: center;
+  background: -webkit-linear-gradient(135deg,#fff, rgb(228, 165, 49));
+  font-size: rem(24);
+  color: #fff;
+}
+
+.chat-block {
+  padding: rem(10);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+
+  .chat-item-red {
+    padding: rem(10);
+    border-radius: rem(10);
+    font-size: rem(20);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: rem(4);
+    background-color: rgb(201, 63, 63)
+  }
+
+  .chat-item-green {
+    padding: rem(10);
+    border-radius: rem(10);
+    font-size: rem(20);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: rem(4);
+    background-color: rgb(62, 201, 62)
+  }
+}
+
+.echart-title {
+  display: flex;
+  padding: rem(10);
+  justify-content: flex-start;
+  align-items: center;
+  background: -webkit-linear-gradient(135deg,#fff, rgb(49, 76, 228));
+  font-size: rem(24);
+  color: #fff;
+}
+
+.echart-block {
+  padding: rem(10);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .chart-item-title1 {
+    font-size: rem(22);
+    color: goldenrod;
+  }
+
+  .chart-item-title2 {
+    font-size: rem(22);
+    color: darkgrey;
+  }
+}
+
+.echart1 {
+  width: 95%;
+  height: rem(500);
 }
