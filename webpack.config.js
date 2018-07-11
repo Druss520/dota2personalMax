@@ -1,6 +1,7 @@
 const path = require('path');
 const WebpackPwaManifest = require('webpack-pwa-manifest');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const uglify = require('uglifyjs-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -89,6 +90,7 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'css/[name].css',
       allChunks: true
-    })
+    }),
+    new uglify()
   ]
 }

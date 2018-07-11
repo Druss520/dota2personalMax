@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack -w --mode=development"
+    "dev": "webpack -w --mode development --progress",
+    "build": "webpack --env production --mode production --progress"
   },
   "author": "",
   "license": "ISC",

@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as styles from './index.scss';
 import ImgView from '../ImgView';
 // import history from '../../history';
-import Toast from '../Toast';
 import * as classNames from 'classnames';
 import { PlayerData } from '../../interface/matchDetail';
 import heroStats, { Heroes } from '../../interface/heros';

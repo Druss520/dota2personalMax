@@ -5,8 +5,6 @@ import { observer } from 'mobx-react';
 import config from '../../config';
 import StateView from '../../components/StateView';
 import heroes from '../../interface/heros';
-import { values } from 'mobx';
-import MatchItem from '../../components/MatchItem';
 import ListPopdown from '../../components/ListPopdown';
 import * as classNames from 'classnames';
 import history from '../../history';
@@ -165,7 +163,6 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
   }
 
   public render(): JSX.Element {
-      const itemDict = require('../../assets/json/items.json');
       return(
         this.state.call1 && this.state.call2 ? (
           <div className={styles.hehe}>
