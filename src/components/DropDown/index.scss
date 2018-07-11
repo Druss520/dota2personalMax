@@ -39,13 +39,13 @@
 .visible {
   position: absolute;
   visibility: visible;
-  // display: flex;
+  display: flex;
   width: rem(200);
   height: rem(400);
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
-  // flex-direction: column;
-  // align-items: flex-start;
+  flex-direction: column;
+  align-items: flex-start;
   // justify-content: space-between;
   padding: rem(10) rem(10);
   border-radius: rem(15);
@@ -63,7 +63,8 @@
 
 .unit {
   width: 100%;
-  display: flex;
+  height: rem(40);
+  display: block;
   font-size: rem(22);
   padding: rem(10) 0;
   border-bottom: rem(1) solid rgba(222, 222, 222, 0.7);

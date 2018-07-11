@@ -149,6 +149,8 @@ class Player {
   public recordTemp: RecordPair[]  = [];
   public RecordData: RecordPair[]  = [];
   @observable public recordList: MatchesRecord[] | undefined;
+  public keyWordHistory: string = undefined;
+  public keyNameHistory: string = undefined;
 
   // 192820722
   public params: Params = {

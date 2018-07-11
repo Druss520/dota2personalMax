@@ -51,6 +51,7 @@ const jiayan = require('../assets/img/item/Observer_Ward_icon.png');
 const sanyeduijian = require('../assets/img/item/Sange_and_Yasha_icon.png');
 const zhenyan = require('../assets/img/item/Sentry_Ward_icon.png');
 const abilityTree = require('../assets/img/talenttree.jpg');
+const codingnet = require('../assets/img/codingnet.png');
 
 export default {
   loading,
@@ -106,4 +107,5 @@ export default {
   sanyeduijian,
   zhenyan,
   abilityTree,
+  codingnet,
 }

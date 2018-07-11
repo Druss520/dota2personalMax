@@ -14,6 +14,8 @@ export const infoData: string;
 export const itemBlock: string;
 export const item: string;
 export const extensionHide: string;
+export const extensionBlockH1: string;
+export const extensionBlockH2: string;
 export const extensionBlock: string;
 export const extTitleRow: string;
 export const extRowLeft: string;

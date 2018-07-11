@@ -89,6 +89,10 @@ class Entry extends React.Component<IAppProps,State>{
               }}
               ></div>
             </div>
+            <img
+            className={styles.codingnet}
+            src={config.img.codingnet}
+            />
             <div className={styles.goPro}
             onClick={() => {
               history.push('/proplayer');

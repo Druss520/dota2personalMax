@@ -174,6 +174,8 @@ class PlayerDetail extends React.Component <Props> {
 
           <div className={classNames({
             [styles.extensionHide]: true,
+            [styles.extensionBlockH1]: providePro && item.player_slot === onSelect && this.state.toggle,
+            [styles.extensionBlockH2]: !providePro && item.player_slot === onSelect && this.state.toggle,
             [styles.extensionBlock]: item.player_slot === onSelect && this.state.toggle
           })}>
             <div className={styles.extTitleRow}>

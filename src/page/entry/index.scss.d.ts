@@ -10,3 +10,4 @@ export const input: string;
 export const button: string;
 export const goPro: string;
 export const goSearch: string;
+export const codingnet: string;

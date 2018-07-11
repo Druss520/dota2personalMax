@@ -117,12 +117,12 @@ function getNamefromList(key: string): string {
   }
 
   public tempid: string;
-  public keyWord: string = 'kills';
+  public keyWord: string = player.keyWordHistory ? player.keyWordHistory : 'kills';
 
   public componentDidMount(): void {
     window.scrollTo(0,0);
 
-    this.tempid = config.global.Global.accountId
+    this.tempid = config.global.Global.accountId;
     const prevAccountId = player.previousRecord;
     if (this.tempid !== prevAccountId) {
       this.makeReq();
@@ -191,6 +191,7 @@ function getNamefromList(key: string): string {
     this.setState({
       call1: false
     });
+    player.keyWordHistory = key;
     this.keyWord = key;
     this.makeReq();
   }

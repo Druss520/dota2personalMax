@@ -1,7 +1,7 @@
 import config from '../../config';
 import * as React from 'react';
 import * as styles from './index.scss';
-import { Peers } from '../../interface/player';
+import player, { Peers } from '../../interface/player';
 import ImgView from '../ImgView';
 // import history from '../../history';
 import Toast from '../Toast';
@@ -18,6 +18,16 @@ interface State {
   word: string;
 }
 
+function getNamefromList(key: string): string {
+  let val = '';
+  wordList.forEach((item) => {
+    if(key === item.param) {
+      val = item.name
+    }
+  })
+  return val;
+}
+
 class DropDown extends React.Component <Props> {
   
   constructor(props: Props) {
@@ -29,7 +39,7 @@ class DropDown extends React.Component <Props> {
 
   public state: State = {
     toggle: false,
-    word: wordList[0].name
+    word: player.keyWordHistory ? getNamefromList(player.keyWordHistory) : wordList[0].name
   }
 
   public click(e: React.MouseEvent<HTMLDivElement>): void {

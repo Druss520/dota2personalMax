@@ -6,7 +6,7 @@ const uglify = require('uglifyjs-webpack-plugin');
 module.exports = {
   entry: './src/index.tsx',
   output: {
-    publicPath: '/dist/',
+    publicPath: './dist/',
     filename: './index.js'
   },
   module: {  
@@ -66,13 +66,15 @@ module.exports = {
   } ,
   plugins: [
     new WebpackPwaManifest({
-      name: 'Dota2 Info',
-      short_name: 'dota',
+      name: 'VisualDota',
+      short_name: 'DotaV',
+      start_url: '/',
       description: 'An isomorphic progressive dota info app built by React',
+      orientation: 'any',
       background_color: '#333',
       theme_color: '#333',
       filename: 'manifest.json',
-      publicPath: '/',
+      publicPath: './',
       icons: [
         {
           src: path.resolve('./', 'icon.png'),
@@ -80,12 +82,6 @@ module.exports = {
           destination: path.join('icons')
         }
       ],
-      ios: {
-        'apple-mobile-web-app-title': 'Manifest1',
-        'apple-mobile-web-app-status-bar-style': '#000',
-        'apple-mobile-web-app-capable': 'yes',
-        'apple-touch-icon': 'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3183691098,1018415343&fm=27&gp=0.jpg',
-      },
     }),
     new ExtractTextPlugin({
       filename: 'css/[name].css',
