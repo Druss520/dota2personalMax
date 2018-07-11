@@ -151,7 +151,7 @@
   padding: rem(10);
   justify-content: flex-start;
   align-items: center;
-  background: -webkit-linear-gradient(135deg,#fff, rgb(228, 165, 49));
+  background: -webkit-linear-gradient(135deg,#fff, rgb(57, 61, 63));
   font-size: rem(24);
   color: #fff;
 }
@@ -163,6 +163,8 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+  font-size: rem(20);
+  color: deepskyblue;
 
   .chat-item-red {
     padding: rem(10);
@@ -194,7 +196,7 @@
   padding: rem(10);
   justify-content: flex-start;
   align-items: center;
-  background: -webkit-linear-gradient(135deg,#fff, rgb(49, 76, 228));
+  background: -webkit-linear-gradient(135deg,#fff, rgb(78, 81, 82));
   font-size: rem(24);
   color: #fff;
 }
@@ -218,6 +220,6 @@
 }
 
 .echart1 {
-  width: 95%;
+  width: 100%;
   height: rem(500);
 }

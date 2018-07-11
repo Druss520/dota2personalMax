@@ -73,7 +73,7 @@ class PlayerDetail extends React.Component <Props> {
     const DataListItem = (name, value) => {
       if (name === '线优') {
         value += '%';
-      } else if (name === '全场控制') {
+      } else if (name === '击晕控制') {
         value = value.toFixed(1) + 's'
       }
       return (
@@ -266,7 +266,7 @@ class PlayerDetail extends React.Component <Props> {
                     {DataListItem('反假眼', item.observer_kills)}
                     {DataListItem('插真眼', item.sen_placed)}
                     {DataListItem('反真眼', item.sentry_kills)}
-                    {DataListItem('全场控制', item.stuns)}
+                    {DataListItem('击晕控制', item.stuns)}
                     {DataListItem('吃赏金符', item.runes[5])}
                   </div>
                   <div className={styles.professionTitle}>技能使用</div>

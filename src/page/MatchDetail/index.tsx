@@ -128,7 +128,8 @@ interface State {
         text:'经济图'
       },
       grid: {
-        left: '15%'
+        left: '15%',
+        right: '15%'
       },
       xAxis: {
         name: '时间',
@@ -195,7 +196,8 @@ interface State {
         text:'经验图'
       },
       grid: {
-        left: '15%'
+        left: '15%',
+        right: '15%'
       },
       xAxis: {
         name: '时间',
@@ -474,7 +476,7 @@ interface State {
                           }
                           if (i === matchDetail.matchDetail.chat.length - 1 && !this.hasChat) {
                             return (
-                              <div style={{ color: '#666' }}
+                              <div
                               key={i}
                               >
                                 (无聊天内容)
