@@ -12,7 +12,7 @@ import ProPlayers from './page/proplayer';
 import Search from './page/search';
 import Peer from './page/peers';
 import Wardmap from './page/wardmap';
-import Record from './page/record';
+// import Record from './page/record';
 import Histogram from './page/histogram';
 import MatchDetail from './page/MatchDetail';
 import RecordNoList from './page/recordNoList';

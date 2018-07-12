@@ -488,8 +488,18 @@ interface State {
                     </div>
                     <div className={styles.echartTitle}>
                       比赛走势
-                  </div>
+                    </div>
                     <div className={styles.echartBlock}>
+                      <div className={styles.describe}>
+                        <div className={styles.descBlock}>
+                          <div className={styles.block1}></div>
+                          <div className={styles.chartDescTitle}>天辉</div>
+                        </div>
+                        <div className={styles.descBlock}>
+                          <div className={styles.block2}></div>
+                          <div className={styles.chartDescTitle}>夜魇</div>
+                        </div>
+                      </div>
                       {/* <div className={styles.chartItemTitle1}>经济</div> */}
                       <div
                         className={styles.echart1}
