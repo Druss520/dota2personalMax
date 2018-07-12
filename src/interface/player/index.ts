@@ -138,7 +138,6 @@ interface RecordParams {
   limit?: number;
 }
 
-
 class Player {
   @observable public playerProfile: PlayerProfile | undefined;
   @observable public winLose: WinLose | undefined;
