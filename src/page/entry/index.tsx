@@ -92,6 +92,9 @@ class Entry extends React.Component<IAppProps,State>{
             <img
             className={styles.codingnet}
             src={config.img.codingnet}
+            onClick={() => {
+              window.location.href = 'https://pages.coding.me';
+            }}
             />
             <div className={styles.goPro}
             onClick={() => {

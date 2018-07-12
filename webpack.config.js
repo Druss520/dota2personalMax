@@ -87,6 +87,6 @@ module.exports = {
       filename: 'css/[name].css',
       allChunks: true
     }),
-    new uglify()
+    // new uglify()
   ]
 }
