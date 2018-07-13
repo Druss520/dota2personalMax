@@ -8,6 +8,7 @@ import getTotalData from './getTotalData';
 import getPeers from './getPeers';
 import getWard from './getward';
 import getRecord, { PlayerMatchRecordParams } from './getMatchesForRecord';
+import getApiDataFromCache from '../../utils/getApiDataFromCache'
 
 interface Params {
   account_id: number;
@@ -160,7 +161,7 @@ class Player {
   public previousPeer: string | undefined;
   public previousRecord: string | undefined;
 
-  public isFakeId: boolean = false;
+  @observable  public isFakeId: boolean = false;
 
   @action public async getAllInfo(): Promise<number> {
     let typeNum = 0;
@@ -168,48 +169,68 @@ class Player {
       account_id: parseInt(config.global.Global.accountId)
     }
 
-    await  getPlayer(this.params).then((res) => {
-      this.playerProfile = res.data;
-      if (this.playerProfile.profile === undefined) {
-        typeNum = 2;
-        this.isFakeId = true;
+    await getApiDataFromCache(`https://api.opendota.com/api/players/${this.params.account_id}`).then((data) => {
+      if (data) {
+          this.playerProfile = data;
       }
-    }).catch((e) => {
-      console.log(e);
-      typeNum = 1;
+      getPlayer(this.params).then((res) => {
+        if (res.data.profile === undefined) {
+          this.isFakeId = true;
+        } else {
+          this.playerProfile = res.data;
+        }
+      }).catch((e) => {
+        console.log(e);
+        typeNum = 1;
+      })
     })
 
-    await  getWinLose(this.params).then((res) => {
-      this.winLose = res.data;
-      if (this.winLose.lose ===0 && this.winLose.win === 0) {
-        typeNum = 2;
-        this.isFakeId = true;
+    await getApiDataFromCache(`https://api.opendota.com/api/players/${this.params.account_id}/wl`).then(data => {
+      if (data) {
+        this.winLose = data;
       }
-    }).catch((e) => {
-      console.log(e);
-      typeNum = 1;
+      getWinLose(this.params).then((res) => {
+        if (res.data.lose ===0 && res.data.win === 0) {
+          this.isFakeId = true;
+        } else {
+          this.winLose = res.data;
+        }
+      }).catch((e) => {
+        console.log(e);
+        typeNum = 1;
+      })
+    })
+
+    await getApiDataFromCache(`https://api.opendota.com/api/players/${this.params.account_id}/recentMatches`).then(data => {
+      if (data) {
+        this.recentMatch = data;
+      }
+      getRecentMatch(this.params).then((res) => {
+        if (res.data.length === 0) {
+          this.isFakeId = true;
+        } else {
+          this.recentMatch = res.data;
+        }
+      }).catch((e) => {
+        console.log(e);
+        typeNum = 1;
+      })
     })
     
-    await  getRecentMatch(this.params).then((res) => {
-      this.recentMatch = res.data;
-      if (this.recentMatch.length === 0) {
-        typeNum = 2;
-        this.isFakeId = true;
+    await getApiDataFromCache(`https://api.opendota.com/api/players/${this.params.account_id}/totals`).then(data => {
+      if (data) {
+        this.totalData = data
       }
-    }).catch((e) => {
-      console.log(e);
-      typeNum = 1;
-    })
-
-    await  getTotalData(this.params).then((res) => {
-      this.totalData = res.data;
-      if (this.totalData.length === 0) {
-        typeNum = 2;
-        this.isFakeId = true;
-      }
-    }).catch((e) => {
-      console.log(e);
-      typeNum = 1;
+      getTotalData(this.params).then((res) => {
+        if (res.data.length === 0) {
+          this.isFakeId = true;
+        } else {
+          this.totalData = res.data;
+        }
+      }).catch((e) => {
+        console.log(e);
+        typeNum = 1;
+      })
     })
 
     return typeNum;

@@ -10,7 +10,6 @@ import proplayers from '../../interface/proplayer';
 import ListView from '../../components/ListView';
 
 interface State {
-  call1: boolean,
   fail: number,
 }
 
@@ -21,24 +20,17 @@ interface State {
   }
 
   public state: State = {
-    call1: false,
     fail: 0,
   }
 
   public componentDidMount(): void {
     if (proplayers.proplayers) {
-      this.setState({
-        call1: true
-      })
+
     } else {
       proplayers.getAllInfo().then((value) => {
         if (value === 1) {
           this.setState({
             fail: 1
-          })
-        } else {
-          this.setState({
-            call1: true
           })
         }
       })
@@ -53,7 +45,7 @@ interface State {
 
   public render(): JSX.Element {
       return(
-        this.state.call1 ? (
+        proplayers.proplayers ? (
         <div className={styles.page}>
             <div className={styles.title}>
               <div className={styles.titleName}>职业ID</div>

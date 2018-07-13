@@ -33,8 +33,8 @@ interface State {
   public state: State = {
     call1: false,
     fail: 0,
-    img1Width: window.screen.width-50,
-    img2Width: window.screen.width-50,
+    img1Width: window.innerWidth-50 > 600 ? 600 : window.innerWidth-50,
+    img2Width: window.innerWidth-50 > 600 ? 600 : window.innerWidth-50,
     key1: Math.random().toString(),
     key2: Math.random().toString()
   }
@@ -64,12 +64,12 @@ interface State {
     // console.log(name);
     if (name === 'obs') {
       this.setState({
-        img1Width: this.state.img1Width === 600 ? window.screen.width-50 : 600,
+        img1Width: this.state.img1Width === 600 ? window.innerWidth-50 : 600,
         key1: Math.random().toString(),
       })
     } else {
       this.setState({
-        img2Width: this.state.img2Width === 600 ? window.screen.width-50 : 600,
+        img2Width: this.state.img2Width === 600 ? window.innerWidth-50 : 600,
         key2: Math.random().toString()
       })
     }

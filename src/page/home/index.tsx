@@ -14,8 +14,6 @@ import DataBlock from '../../components/Datablock';
 
 interface State {
   fail: number;
-  call1: boolean;
-  call2: boolean;
   dropdata: boolean;
 }
 
@@ -83,8 +81,6 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
 
   public state: State = {
     fail: 0,
-    call1: false,
-    call2: false,
     dropdata: false,
   }
 
@@ -101,10 +97,7 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
       } else {
         // console.log('cache');
         if (player.playerProfile && heroes.heroArray && player.winLose && player.totalData && player.recentMatch) {
-          this.setState({
-            call1: true,
-            call2: true,
-          })
+
         } else {
           this.sendRequest();
         }
@@ -119,31 +112,18 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
         this.setState({
           fail: 1
         })
-      } else if (value === 2) {
-        this.setState({
-          fail: 2
-        })
       } else {
         player.isFakeId = false;
         player.previousAccountId = this.tempid;
-        this.setState({
-          call1: true
-        })
       }
     });
     if (heroes.heroArray) {
-      this.setState({
-        call2: true
-      })
+
     } else {
       heroes.getHeroInfo().then((value) => {
         if(value) {
           this.setState({
             fail: 1
-          })
-        } else {
-          this.setState({
-            call2: true
           })
         }
       })
@@ -164,7 +144,7 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
 
   public render(): JSX.Element {
       return(
-        this.state.call1 && this.state.call2 ? (
+        player.playerProfile && player.winLose && player.recentMatch && player.totalData && heroes.heroArray ? (
           <div className={styles.hehe}>
             <div className={styles.header}>
               <div className={styles.switch1}
@@ -306,7 +286,7 @@ const ThemeBlock = (item: ThemeBlock, i: number) => {
           this.state.fail === 1 ? (
             <StateView state={'fail'} />
           ) : (
-            this.state.fail === 2 ? (
+            player.isFakeId ? (
               <div className={styles.reload}>
                 <img
                 className={styles.noSuch}

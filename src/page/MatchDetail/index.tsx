@@ -21,7 +21,6 @@ const server = require('../../assets/json/region.json');
 interface State {
   call1: boolean;
   fail: number;
-  call2: boolean;
   toggle: number | string;
 }
 
@@ -36,7 +35,6 @@ interface State {
 
   public state: State = {
     call1: false,
-    call2: false,
     fail: 0,
     toggle: -1,
   }
@@ -56,18 +54,12 @@ interface State {
 
   public async makeReq(): Promise<void> {
     if (heroes.heroArray) {
-      this.setState({
-        call2: true
-      })
+
     } else {
       heroes.getHeroInfo().then((value) => {
         if (value) {
           this.setState({
             fail: 1
-          })
-        } else {
-          this.setState({
-            call2: true
           })
         }
       })
@@ -371,7 +363,7 @@ interface State {
           比赛详情
           </div>
         {
-          this.state.call1 && this.state.call2 ? (
+          this.state.call1 && heroes.heroArray ? (
             <div>
               <div className={styles.dashBoard}>
                 {DashItem('比赛ID', matchDetail.matchDetail.match_id)}

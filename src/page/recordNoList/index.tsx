@@ -15,7 +15,6 @@ import DropDown from '../../components/DropDown';
 interface State {
   call1: boolean;
   fail: number;
-  call2: boolean;
   // keyWord: string;
 }
 
@@ -111,7 +110,6 @@ function getNamefromList(key: string): string {
 
   public state: State = {
     call1: false,
-    call2: false,
     fail: 0,
     // keyWord: 'kills',
   }
@@ -130,7 +128,6 @@ function getNamefromList(key: string): string {
       if (heroes.heroArray && player.recordList.length !== 0) {
         this.setState({
           call1: true,
-          call2: true
         })
       } else {
         this.makeReq();
@@ -141,18 +138,12 @@ function getNamefromList(key: string): string {
 
   public async makeReq(): Promise<void> {
     if (heroes.heroArray) {
-      this.setState({
-        call2: true
-      })
+
     } else {
       heroes.getHeroInfo().then((value) => {
         if(value) {
           this.setState({
             fail: 1
-          })
-        } else {
-          this.setState({
-            call2: true
           })
         }
       })
@@ -227,7 +218,7 @@ function getNamefromList(key: string): string {
             <div className={styles.tt5}>结果</div>
           </div>
         {
-          this.state.call1 && this.state.call2 ? (
+          this.state.call1 && heroes.heroArray ? (
             player.recordList.map((item, i) => {
               return (
                 <RecordListItem

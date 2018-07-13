@@ -1,6 +1,7 @@
 import { observable } from 'mobx';
 import {action} from 'mobx';
 import getHeros from './getAllHero';
+import getApiDataFromCache from '../../utils/getApiDataFromCache';
 
 export interface Heroes {
   id: number,
@@ -18,11 +19,18 @@ class Heros {
   @action public async getHeroInfo(): Promise<boolean> {
     let fail = false;
 
-    await  getHeros().then((res) => {
-      this.heroArray = res.data;
-    }).catch((e) => {
-      console.log(e);
-      fail = true;
+    await getApiDataFromCache('https://api.opendota.com/api/heroStats').then((data) => {
+      if (data) {
+        this.heroArray = data
+      }
+      else {
+        getHeros().then((res) => {
+          this.heroArray = res.data;
+        }).catch((e) => {
+          console.log(e);
+          fail = true;
+        })
+      }
     })
 
     return fail;

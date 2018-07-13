@@ -2,7 +2,7 @@ import { observable } from 'mobx';
 import getProPlayer from './getProplayers';
 import {action} from 'mobx';
 import config from '../../config';
-
+import getApiDataFromCache from '../../utils/getApiDataFromCache';
 
 export  interface ProPlayers {
   account_id: number,
@@ -79,22 +79,39 @@ class ProPlayer {
     let typeNum = 0;
     let tempArray: ProPlayers[] = [];
 
-    await getProPlayer().then((res) => {
-      this.allPro= res.data;
-      this.allPro.forEach((item) => {
-        if (item.name.indexOf(ob) >= 0) {
-          tempArray.push(item);
-        }
-        if (item.name && item.team_name && item.steamid) {
-          if (teams[item.team_name] !== undefined) {
+    await getApiDataFromCache('https://api.opendota.com/api/proPlayers').then((data) => {
+      if (data) {
+        this.allPro= data;
+        this.allPro.forEach((item) => {
+          if (item.name.indexOf(ob) >= 0) {
             tempArray.push(item);
           }
-        }
-      })
-      this.proplayers = tempArray;
-    }).catch((e) => {
-      console.log(e);
-      typeNum = 1;
+          if (item.name && item.team_name && item.steamid) {
+            if (teams[item.team_name] !== undefined) {
+              tempArray.push(item);
+            }
+          }
+        })
+        this.proplayers = tempArray;
+      } else {
+        getProPlayer().then((res) => {
+          this.allPro= res.data;
+          this.allPro.forEach((item) => {
+            if (item.name.indexOf(ob) >= 0) {
+              tempArray.push(item);
+            }
+            if (item.name && item.team_name && item.steamid) {
+              if (teams[item.team_name] !== undefined) {
+                tempArray.push(item);
+              }
+            }
+          })
+          this.proplayers = tempArray;
+        }).catch((e) => {
+          console.log(e);
+          typeNum = 1;
+        })
+      }
     })
 
     return typeNum;
